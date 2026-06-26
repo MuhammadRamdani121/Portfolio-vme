@@ -1,7 +1,9 @@
-export default function NavbarItems() {
+import { NavLink } from "react-router-dom";
+
+export default function NavbarItems(nama, path) {
   return (
     <div>
-      <h1></h1>
+      <NavLink to={path}>{nama}</NavLink>
     </div>
   );
 }
