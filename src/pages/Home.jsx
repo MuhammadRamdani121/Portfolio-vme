@@ -1,3 +1,4 @@
+import HeroSection from "../component/HeroSection/HeroSection";
 import MenuNavbar from "../component/Navbar/MenuNavbar";
 
 export default function Home() {
@@ -6,7 +7,11 @@ export default function Home() {
       <header>
         <MenuNavbar />
       </header>
-      <h1 className="text-center text-4xl font-bold">Home Page</h1>
+      <main>
+        <section>
+          <HeroSection />
+        </section>
+      </main>
     </div>
   );
 }
