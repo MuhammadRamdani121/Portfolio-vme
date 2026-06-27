@@ -9,7 +9,11 @@ export default function MenuNavbar() {
     <div>
       <header className="relative flex items-center justify-between bg-red-500 px-6">
         {/* Logo */}
-        <img src="" alt="asd" />
+        <img
+          className="my-2 h-15 w-15 rounded-full border md:h-12 md:w-12"
+          src="/GambarDiri.jpg"
+          alt="asd"
+        />
 
         {/* Desktop Version */}
         <nav className="hidden gap-6 md:flex">
@@ -26,7 +30,10 @@ export default function MenuNavbar() {
 
         {/* Hamburger */}
         <nav className="p-4 md:hidden">
-          <button onClick={() => setOpenMenu(!openMenu)} className="md:hidden">
+          <button
+            onClick={() => setOpenMenu(!openMenu)}
+            className="text-4xl md:hidden"
+          >
             ☰
           </button>
           {/* Mobile Menu */}
