@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 
-export default function NavbarItems({ nama, to }) {
+export default function NavbarItems({ nama, path }) {
   return (
     <NavLink
+      path={path}
       className={({ isActive }) =>
         `block px-4 py-1 ${
           isActive
@@ -10,7 +11,6 @@ export default function NavbarItems({ nama, to }) {
             : "text-gray-400 hover:text-blue-500"
         }`
       }
-      to={to}
     >
       {nama}
     </NavLink>
