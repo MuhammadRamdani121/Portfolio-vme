@@ -11,6 +11,7 @@ export default function MobileDropdown({ nama, children }) {
         {nama}
         <span>{open ? "▲" : "▼"}</span>
       </button>
+      {open && <div className="ml-4 flex flex-col">{children}</div>}
     </div>
   );
 }
