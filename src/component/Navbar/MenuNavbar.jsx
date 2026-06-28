@@ -1,18 +1,19 @@
 import { useState } from "react";
-import { navigation } from "../data/navigation";
+import { navigation } from "../../data/Navigation";
 import NavbarItems from "./NavbarItems";
 import DropdownNavbar from "./DropdownNavbar";
 import MobileDropdown from "./MobileDropdown";
 
 export default function MenuNavbar() {
   const [openMenu, setOpenMenu] = useState(false);
+
   return (
-    <header>
+    <header className="relative flex items-center justify-between p-4">
       {/* Logo */}
       <h1 className="text-xl font-bold">Logo</h1>
 
-      {/* Dekstop */}
-      <nav>
+      {/* Desktop */}
+      <nav className="hidden items-center gap-6 md:flex">
         {navigation.map((menu) => {
           if (menu.children) {
             return (
@@ -33,8 +34,8 @@ export default function MenuNavbar() {
           );
         })}
       </nav>
-      {/* Hamburger */}
 
+      {/* Hamburger */}
       <button
         onClick={() => setOpenMenu(!openMenu)}
         className="text-2xl md:hidden"
@@ -44,8 +45,8 @@ export default function MenuNavbar() {
 
       {/* Mobile */}
       {openMenu && (
-        <div>
-          <div>
+        <div className="absolute top-full left-0 w-full bg-white shadow-md md:hidden">
+          <div className="flex flex-col p-4">
             {navigation.map((menu) => {
               if (menu.children) {
                 return (
@@ -60,6 +61,7 @@ export default function MenuNavbar() {
                   </MobileDropdown>
                 );
               }
+
               return (
                 <NavbarItems key={menu.nama} nama={menu.nama} to={menu.path} />
               );

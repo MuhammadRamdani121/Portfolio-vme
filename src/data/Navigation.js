@@ -1,4 +1,4 @@
-export const Navigation = [
+export const navigation = [
   {
     nama: "Home",
     path: "/",
