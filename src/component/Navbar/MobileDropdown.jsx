@@ -9,7 +9,13 @@ export default function MobileDropdown({ nama, children }) {
         className="flex w-full justify-between py-2"
       >
         {nama}
-        <span>{open ? " ▲" : " ▼"}</span>
+        <span
+          className={`inline-block transition-transform duration-200 ${
+            open && "rotate-90"
+          }`}
+        >
+          ➤
+        </span>
       </button>
       {open && <div className="ml-4 flex flex-col">{children}</div>}
     </div>
