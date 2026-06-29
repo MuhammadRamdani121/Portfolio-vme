@@ -8,7 +8,7 @@ export default function MenuNavbar() {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <header className="relative flex items-center justify-between p-4">
+    <header className="relative flex items-center justify-between bg-red-400 p-1">
       {/* Logo */}
       <h1 className="text-xl font-bold">Logo</h1>
 
@@ -22,7 +22,7 @@ export default function MenuNavbar() {
                   <NavbarItems
                     key={item.nama}
                     nama={item.nama}
-                    to={item.path}
+                    path={item.path}
                   />
                 ))}
               </DropdownNavbar>
@@ -30,7 +30,7 @@ export default function MenuNavbar() {
           }
 
           return (
-            <NavbarItems key={menu.nama} nama={menu.nama} to={menu.path} />
+            <NavbarItems key={menu.nama} nama={menu.nama} path={menu.path} />
           );
         })}
       </nav>
@@ -55,7 +55,7 @@ export default function MenuNavbar() {
                       <NavbarItems
                         key={item.nama}
                         nama={item.nama}
-                        to={item.path}
+                        path={item.path}
                       />
                     ))}
                   </MobileDropdown>
@@ -63,7 +63,11 @@ export default function MenuNavbar() {
               }
 
               return (
-                <NavbarItems key={menu.nama} nama={menu.nama} to={menu.path} />
+                <NavbarItems
+                  key={menu.nama}
+                  nama={menu.nama}
+                  path={menu.path}
+                />
               );
             })}
           </div>

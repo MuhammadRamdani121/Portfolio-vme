@@ -4,7 +4,7 @@ import MenuNavbar from "../component/Navbar/MenuNavbar";
 export default function Home() {
   return (
     <div>
-      <header>
+      <header className="">
         <MenuNavbar />
       </header>
       <main>

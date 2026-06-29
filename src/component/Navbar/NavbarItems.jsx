@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 export default function NavbarItems({ nama, path }) {
   return (
     <NavLink
-      path={path}
+      to={path}
       className={({ isActive }) =>
         `block px-4 py-1 ${
           isActive
-            ? "font-semibold text-blue-500"
-            : "text-gray-400 hover:text-blue-500"
+            ? "font-semibold text-black"
+            : "text-white hover:text-blue-500"
         }`
       }
     >

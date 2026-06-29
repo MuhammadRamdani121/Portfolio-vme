@@ -1,14 +1,14 @@
 export const navigation = [
   {
     nama: "Home",
-    path: "/",
+    path: "/about",
   },
   {
     nama: "About",
     children: [
       {
         nama: "Nama 1",
-        path: "/nama 1",
+        path: "/about",
       },
       {
         nama: "Nama 2",
@@ -18,6 +18,6 @@ export const navigation = [
   },
   {
     nama: "Footer",
-    path: "/Footer2",
+    path: "/about",
   },
 ];
