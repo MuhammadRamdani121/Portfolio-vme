@@ -8,7 +8,7 @@ export default function NavbarItems({ nama, path }) {
         `block px-4 py-1 ${
           isActive
             ? "font-semibold text-black"
-            : "text-white hover:text-blue-500"
+            : "text-black hover:text-blue-500"
         }`
       }
     >

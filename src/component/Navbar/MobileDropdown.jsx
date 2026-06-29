@@ -9,7 +9,7 @@ export default function MobileDropdown({ nama, children }) {
         className="flex w-full justify-between py-2"
       >
         {nama}
-        <span>{open ? "▲" : "▼"}</span>
+        <span>{open ? " ▲" : " ▼"}</span>
       </button>
       {open && <div className="ml-4 flex flex-col">{children}</div>}
     </div>
