@@ -5,7 +5,7 @@ export default function NavbarItems({ nama, path }) {
     <NavLink
       to={path}
       className={({ isActive }) =>
-        `block px-4 py-1 ${
+        `block py-1 ${
           isActive
             ? "font-semibold text-black"
             : "text-black hover:text-blue-500"

@@ -8,12 +8,12 @@ export default function MenuNavbar() {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <header className="relative flex items-center justify-between bg-red-400 p-1">
+    <header className="relative flex items-center justify-between rounded bg-red-400 px-4 py-2 md:py-0">
       {/* Logo */}
       <h1 className="text-xl font-bold">Logo</h1>
 
       {/* Desktop */}
-      <nav className="hidden items-center gap-6 md:flex">
+      <nav className="hidden items-center gap-2 md:flex">
         {navigation.map((menu) => {
           if (menu.children) {
             return (

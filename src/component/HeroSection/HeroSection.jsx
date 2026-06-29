@@ -4,10 +4,10 @@ export default function HeroSection() {
   return (
     <div>
       <main className="grid h-screen grid-cols-1 items-center justify-center md:grid-cols-2">
-        <section className="order-2 grid items-center justify-center md:order-1">
+        <section className="order-2 grid items-center justify-center text-center md:order-1">
           <h1>Muhammad Ramdani</h1>
           <p>Frontend Developer | React Developer</p>
-          <nav className="mt-6 flex gap-4">
+          <nav className="mt-2 flex items-center justify-center gap-4">
             <a
               href="https://wa.me/628xxxxxxxxxx"
               target="_blank"
