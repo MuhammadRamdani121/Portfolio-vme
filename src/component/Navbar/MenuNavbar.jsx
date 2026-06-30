@@ -10,7 +10,12 @@ export default function MenuNavbar() {
   return (
     <header className="relative flex items-center justify-between rounded bg-red-400 px-4 py-2 md:py-0">
       {/* Logo */}
-      <h1 className="text-xl font-bold">Logo</h1>
+
+      <img
+        className="h-11 w-11 rounded-full border md:h-13 md:w-13"
+        src="/GambarDiri.jpg"
+        alt=""
+      />
 
       {/* Desktop */}
       <nav className="hidden items-center gap-2 md:flex">
