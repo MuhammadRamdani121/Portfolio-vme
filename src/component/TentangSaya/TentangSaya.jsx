@@ -11,6 +11,13 @@ export default function TentangSaya() {
           CSS. Saya senang mempelajari teknologi baru dan membangun aplikasi
           yang bermanfaat.
         </h1>
+        <nav className="flex flex-col">
+          <a href="">Pendidikan</a>
+          <a href="">Pengalaman</a>
+          <a href="">Skills</a>
+          <a href="">Tujuan Karier</a>
+          <a href=""></a>
+        </nav>
       </section>
       <section></section>
     </main>
