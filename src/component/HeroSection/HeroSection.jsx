@@ -1,35 +1,79 @@
-import { FaWhatsapp } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
 export default function HeroSection() {
   return (
-    <div>
-      <main className="grid h-screen grid-cols-1 items-center justify-center md:grid-cols-2">
-        <section className="order-2 grid items-center justify-center text-center md:order-1">
-          <h1>Muhammad Ramdani</h1>
-          <p>Frontend Developer | React Developer</p>
-          <nav className="mt-2 flex items-center justify-center gap-4">
+    <section className="relative overflow-hidden bg-linear-to-br from-slate-50 via-white to-blue-50">
+      {/* Blob */}
+      <div className="absolute top-20 -left-20 h-72 w-72 rounded-full bg-blue-200/30 blur-3xl" />
+      <div className="absolute -right-20 bottom-20 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
+
+      <main className="relative mx-auto flex min-h-screen max-w-6xl flex-col-reverse items-center justify-center gap-16 px-6 md:flex-row">
+        {/* Text */}
+        <section className="text-center md:w-3/5 md:text-left">
+          <span className="rounded-full border bg-white/70 px-4 py-2 text-sm shadow-sm backdrop-blur">
+            👋 Available for Work
+          </span>
+
+          <h1 className="mt-6 text-5xl font-bold md:text-6xl">
+            Muhammad Ramdani
+          </h1>
+
+          <h2 className="mt-3 text-2xl text-gray-600">
+            Frontend Developer | React Developer
+          </h2>
+
+          <p className="mt-6 max-w-xl leading-8 text-gray-500">
+            Saya seorang Front-End Developer yang berfokus pada pembuatan
+            website modern, responsif, dan user friendly menggunakan React dan
+            Tailwind CSS.
+          </p>
+
+          {/* Tech Stack */}
+          <div className="mt-6 flex flex-wrap justify-center gap-2 md:justify-start">
+            <span className="rounded-full border bg-white px-4 py-2">
+              React
+            </span>
+            <span className="rounded-full border bg-white px-4 py-2">
+              Tailwind CSS
+            </span>
+            <span className="rounded-full border bg-white px-4 py-2">
+              JavaScript
+            </span>
+            <span className="rounded-full border bg-white px-4 py-2">
+              Node.js
+            </span>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center md:justify-start">
             <a
-              href="https://wa.me/628xxxxxxxxxx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-3xl text-green-500"
+              href="/cv.pdf"
+              download
+              className="rounded-xl bg-black px-6 py-3 text-center text-white transition hover:-translate-y-1"
             >
-              <FaWhatsapp />
+              Download CV
             </a>
 
-            <a href="mailto:emailkamu@gmail.com">
-              <SiGmail className="text-3xl text-red-500" />
+            <a
+              href="#projects"
+              className="rounded-xl border bg-white px-6 py-3 text-center transition hover:-translate-y-1"
+            >
+              Lihat Project
             </a>
-          </nav>
+          </div>
         </section>
-        <aside className="order-1 grid items-center justify-center">
-          <img
-            src="/GambarDiri.jpg"
-            className="h-50 w-50 rounded-full"
-            alt=""
-          />
+
+        {/* Photo */}
+        <aside className="flex justify-center md:w-2/5">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full bg-blue-200/40 blur-3xl" />
+
+            <img
+              src="/GambarDiri.jpg"
+              alt="Muhammad Ramdani"
+              className="relative h-72 w-72 rounded-full border-4 border-white object-cover shadow-2xl md:h-96 md:w-96"
+            />
+          </div>
         </aside>
       </main>
-    </div>
+    </section>
   );
 }

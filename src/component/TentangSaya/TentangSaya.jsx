@@ -1,69 +1,90 @@
 export default function TentangSaya() {
   return (
-    <div className="">
-      <h1 className="text-center text-2xl font-bold underline underline-offset-8">
-        Tentang Saya
-      </h1>
-
-      <main className="my-2 flex h-screen flex-col items-center px-4 md:my-10 md:flex-row md:items-start">
-        <section className="flex flex-col gap-4 border md:w-1/2">
-          <h1 className="px-4 text-justify indent-1.5">
-            Saya Muhammad Ramdani, seorang Front-End Web Developer yang memiliki
-            minat dalam pengembangan website modern menggunakan React dan
-            Tailwind CSS. Saya senang mempelajari teknologi baru dan membangun
-            aplikasi yang bermanfaat.
+    <section className="bg-linear-to-b from-white to-slate-50 py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 text-center">
+          <h1 className="inline-block border-b-2 border-black pb-2 text-3xl font-bold">
+            Tentang Saya
           </h1>
-          <nav className="flex justify-center gap-2">
-            <a href="" className="">
-              Pendidikan
-            </a>
-            <a href="" className="border-l pl-2">
-              Pengalaman
-            </a>
-            <a href="" className="border-l pl-2">
-              Skills
-            </a>
-            <a href="" className="border-l pl-2">
-              Tujuan Karier
-            </a>
-          </nav>
-        </section>
-        <section className="my-6 flex flex-col items-center justify-center gap-8 border md:mx-4 md:my-0 md:w-1/2">
-          <aside className="">
-            <h1 className="text-center text-lg font-bold uppercase">
-              Statistik
-            </h1>
-            <nav className="flex gap-2">
-              <a href="" className="">
-                5+ Project
-              </a>
-              <a href="" className="border-l pl-2">
-                1+ Tahun Belajar
-              </a>
-              <a href="" className="border-l pl-2">
-                1000+ Jam Coding
-              </a>
-            </nav>
-          </aside>
-          <aside className="">
-            <h1 className="text-center text-lg font-bold uppercase">
-              Download CV/Resume
-            </h1>
-            <nav className="relative flex gap-2">
-              <div>
-                <a href="" className="border px-4">
+        </div>
+
+        <div className="flex flex-col gap-6 md:flex-row">
+          {/* Kiri */}
+          <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm md:w-2/3">
+            <h2 className="mb-4 text-2xl font-bold">
+              Halo, Saya Muhammad Ramdani 👋
+            </h2>
+
+            <p className="leading-8 text-gray-600">
+              Saya memiliki minat dalam pengembangan website modern menggunakan
+              React dan Tailwind CSS. Saya senang mempelajari teknologi baru dan
+              membangun aplikasi yang bermanfaat.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <span className="rounded-full border px-4 py-2">
+                🎓 Pendidikan
+              </span>
+
+              <span className="rounded-full border px-4 py-2">
+                💼 Pengalaman
+              </span>
+
+              <span className="rounded-full border px-4 py-2">💻 Skills</span>
+
+              <span className="rounded-full border px-4 py-2">
+                🚀 Tujuan Karier
+              </span>
+            </div>
+          </div>
+
+          {/* Kanan */}
+          <div className="flex flex-col gap-6 md:w-1/3">
+            <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+              <h2 className="mb-6 text-center text-xl font-bold">Statistik</h2>
+
+              <div className="grid grid-cols-3 gap-4 text-center">
+                <div>
+                  <h3 className="text-2xl font-bold">5+</h3>
+                  <p className="text-sm text-gray-500">Project</p>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold">1+</h3>
+                  <p className="text-sm text-gray-500">Tahun</p>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold">1000+</h3>
+                  <p className="text-sm text-gray-500">Jam</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+              <h2 className="mb-6 text-center text-xl font-bold">Download</h2>
+
+              <div className="flex flex-col gap-3">
+                <a
+                  href="/cv.pdf"
+                  download
+                  className="rounded-xl border px-4 py-3 text-center transition hover:bg-black hover:text-white"
+                >
                   Download CV
                 </a>
-              </div>
-              <div className="border-l-3 pl-2">
-                <a href="" className="border px-4">
+
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="rounded-xl border px-4 py-3 text-center transition hover:bg-black hover:text-white"
+                >
                   Download Resume
                 </a>
               </div>
-            </nav>
-          </aside>
-        </section>
-      </main>
-    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
