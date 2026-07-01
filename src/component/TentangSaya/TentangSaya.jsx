@@ -11,15 +11,25 @@ export default function TentangSaya() {
           CSS. Saya senang mempelajari teknologi baru dan membangun aplikasi
           yang bermanfaat.
         </h1>
+      </section>
+      <section>
         <nav className="flex justify-center gap-2">
           <a href="">Pendidikan</a>
           <a href="">Pengalaman</a>
           <a href="">Skills</a>
           <a href="">Tujuan Karier</a>
-          <a href=""></a>
         </nav>
+        <aside>
+          <h1>Statistik</h1>
+          <nav>
+            <a href="">5+ Project</a>
+            <a href="">1+ Tahun Belajar</a>
+            <a href="">1000+ Jam Coding</a>
+            <a href=""></a>
+            <a href=""></a>
+          </nav>
+        </aside>
       </section>
-      <section></section>
     </main>
   );
 }
