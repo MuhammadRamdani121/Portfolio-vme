@@ -5,10 +5,10 @@ export default function NavbarItems({ nama, path }) {
     <NavLink
       to={path}
       className={({ isActive }) =>
-        `block py-1 ${
+        `block rounded-lg px-4 py-3 transition ${
           isActive
-            ? "font-semibold text-black"
-            : "text-black hover:text-blue-500"
+            ? "font-semibold text-blue-500"
+            : "text-gray-700 hover:bg-white/20 hover:text-blue-500"
         }`
       }
     >

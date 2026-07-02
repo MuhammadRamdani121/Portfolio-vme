@@ -1,23 +1,40 @@
-export const navigation = [
-  {
-    nama: "Home",
-    path: "/about",
-  },
-  {
-    nama: "About",
-    children: [
-      {
-        nama: "Nama 1",
-        path: "/about",
-      },
-      {
-        nama: "Nama 2",
-        path: "/Nama 2",
-      },
-    ],
-  },
-  {
-    nama: "Footer",
-    path: "/about",
-  },
-];
+export const navigations = {
+  portfolio: [
+    {
+      nama: "Home",
+      path: "/",
+    },
+    {
+      nama: "About",
+      path: "/about",
+    },
+    {
+      nama: "Projects",
+      children: [
+        {
+          nama: "Web Projects",
+          path: "/projects/web",
+        },
+        {
+          nama: "UI Clone",
+          path: "/projects/ui-clone",
+        },
+        {
+          nama: "Academic Projects",
+          path: "/projects/academic",
+        },
+      ],
+    },
+    {
+      nama: "Certificates",
+      path: "/certificates",
+    },
+    {
+      nama: "Contact",
+      path: "/contact",
+    },
+  ],
+
+  // dashboard: [],
+  // ecommerce: [],
+};
