@@ -5,7 +5,12 @@ export default function About() {
     <div>
       <h1>About</h1>
 
-      <Link to="/">Home</Link>
+      <Link
+        className="flex rounded border px-2 text-blue-500 hover:text-blue-700"
+        to="/"
+      >
+        Homeasd
+      </Link>
     </div>
   );
 }
