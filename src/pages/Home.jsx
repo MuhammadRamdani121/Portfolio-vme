@@ -2,6 +2,7 @@ import HeroSection from "../component/HeroSection/HeroSection";
 
 import MenuNavbar from "../component/Navbar/MenuNavbar";
 import Pendidikan from "../component/Pendidikan/Pendidikan";
+import Project from "../component/Project/Project";
 import Skills from "../component/Skills/Skills";
 import TentangSaya from "../component/TentangSaya/TentangSaya";
 
@@ -28,6 +29,10 @@ export default function Home() {
 
         <section>
           <Skills />
+        </section>
+
+        <section>
+          <Project />
         </section>
       </main>
     </div>
