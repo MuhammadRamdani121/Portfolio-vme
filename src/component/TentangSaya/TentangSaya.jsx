@@ -1,90 +1,79 @@
-export default function TentangSaya() {
+export default function TentangSayaa() {
   return (
-    <section className="bg-linear-to-b from-white to-slate-50 py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 text-center">
-          <h1 className="inline-block border-b-2 border-black pb-2 text-3xl font-bold">
-            Tentang Saya
-          </h1>
-        </div>
+    <>
+      <header className="py-16 text-center">
+        <h1 className="inline-block border-b-2 border-gray-500 pb-2 text-4xl font-bold">
+          Tentang Saya
+        </h1>
+      </header>
 
-        <div className="flex flex-col gap-6 md:flex-row">
-          {/* Kiri */}
-          <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm md:w-2/3">
-            <h2 className="mb-4 text-2xl font-bold">
-              Halo, Saya Muhammad Ramdani 👋
-            </h2>
+      <main className="px-6 pb-20">
+        <section className="grid grid-cols-1 gap-8 md:grid-cols-[2fr_1fr]">
+          <article className="rounded-3xl border border-zinc-800 bg-zinc-950 p-10">
+            <h1 className="text-4xl font-bold">
+              Hallo, Saya Muhammad Ramdani 👋
+            </h1>
 
-            <p className="leading-8 text-gray-600">
+            <p className="mt-6 max-w-3xl leading-10 text-gray-400">
               Saya memiliki minat dalam pengembangan website modern menggunakan
               React dan Tailwind CSS. Saya senang mempelajari teknologi baru dan
               membangun aplikasi yang bermanfaat.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <span className="rounded-full border px-4 py-2">
+            <nav className="mt-10 flex flex-wrap gap-4">
+              <span className="rounded-full border border-zinc-700 px-6 py-3">
                 🎓 Pendidikan
               </span>
 
-              <span className="rounded-full border px-4 py-2">
+              <span className="rounded-full border border-zinc-700 px-6 py-3">
                 💼 Pengalaman
               </span>
 
-              <span className="rounded-full border px-4 py-2">💻 Skills</span>
+              <span className="rounded-full border border-zinc-700 px-6 py-3">
+                💻 Skills
+              </span>
 
-              <span className="rounded-full border px-4 py-2">
+              <span className="rounded-full border border-zinc-700 px-6 py-3">
                 🚀 Tujuan Karier
               </span>
-            </div>
-          </div>
+            </nav>
+          </article>
 
-          {/* Kanan */}
-          <div className="flex flex-col gap-6 md:w-1/3">
-            <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
-              <h2 className="mb-6 text-center text-xl font-bold">Statistik</h2>
+          <aside className="flex flex-col gap-8">
+            <header className="rounded-3xl border border-zinc-800 bg-zinc-950 p-10 text-center">
+              <h1 className="text-3xl font-bold">Statistik</h1>
+              <nav className="flex items-center justify-center gap-5">
+                <span className="mt-8 inline-block">
+                  <h1 className="text-xl font-bold">5+</h1>
+                  <p className="text-gray-400">Project</p>
+                </span>
 
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div>
-                  <h3 className="text-2xl font-bold">5+</h3>
-                  <p className="text-sm text-gray-500">Project</p>
-                </div>
+                <span className="mt-8 inline-block">
+                  <h1 className="text-xl font-bold">1+</h1>
+                  <p className="text-gray-400">Tahun</p>
+                </span>
 
-                <div>
-                  <h3 className="text-2xl font-bold">1+</h3>
-                  <p className="text-sm text-gray-500">Tahun</p>
-                </div>
+                <span className="mt-8 inline-block">
+                  <h1 className="text-xl font-bold">1000+</h1>
+                  <p className="text-gray-400">Jam</p>
+                </span>
+              </nav>
+            </header>
 
-                <div>
-                  <h3 className="text-2xl font-bold">1000+</h3>
-                  <p className="text-sm text-gray-500">Jam</p>
-                </div>
-              </div>
-            </div>
+            <nav className="rounded-3xl border border-zinc-800 bg-zinc-950 p-10">
+              <h1 className="mb-8 text-center text-3xl font-bold">Download</h1>
 
-            <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
-              <h2 className="mb-6 text-center text-xl font-bold">Download</h2>
+              <button className="mb-4 h-14 w-full rounded-xl border border-zinc-700 transition hover:bg-white hover:text-black">
+                Download CV
+              </button>
 
-              <div className="flex flex-col gap-3">
-                <a
-                  href="/cv.pdf"
-                  download
-                  className="rounded-xl border px-4 py-3 text-center transition hover:bg-black hover:text-white"
-                >
-                  Download CV
-                </a>
-
-                <a
-                  href="/resume.pdf"
-                  download
-                  className="rounded-xl border px-4 py-3 text-center transition hover:bg-black hover:text-white"
-                >
-                  Download Resume
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+              <button className="h-14 w-full rounded-xl border border-zinc-700 transition hover:bg-white hover:text-black">
+                Download Resume
+              </button>
+            </nav>
+          </aside>
+        </section>
+      </main>
+    </>
   );
 }

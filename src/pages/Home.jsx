@@ -1,6 +1,8 @@
 import HeroSection from "../component/HeroSection/HeroSection";
+
 import MenuNavbar from "../component/Navbar/MenuNavbar";
 import TentangSaya from "../component/TentangSaya/TentangSaya";
+
 import { navigations } from "../data/Navigation";
 
 export default function Home() {
@@ -14,7 +16,7 @@ export default function Home() {
           <HeroSection />
         </section>
 
-        <section className="border">
+        <section className="">
           <TentangSaya />
         </section>
       </main>

@@ -1,79 +1,69 @@
-export default function HeroSection() {
+export default function HeroSectionn() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-br from-slate-50 via-white to-blue-50">
-      {/* Blob */}
-      <div className="absolute top-20 -left-20 h-72 w-72 rounded-full bg-blue-200/30 blur-3xl" />
-      <div className="absolute -right-20 bottom-20 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
+    <>
+      <main className="px-6">
+        <section className="flex min-h-screen flex-col-reverse items-center justify-center gap-12 md:flex-row md:justify-between">
+          {/* Kiri */}
+          <article className="max-w-2xl text-center md:text-left">
+            <header className="flex flex-col gap-4">
+              <span className="w-fit rounded-full bg-green-500/10 px-4 py-1 text-sm text-green-400">
+                👋 Available for Work
+              </span>
 
-      <main className="relative mx-auto flex min-h-screen max-w-6xl flex-col-reverse items-center justify-center gap-16 px-6 md:flex-row">
-        {/* Text */}
-        <section className="text-center md:w-3/5 md:text-left">
-          <span className="rounded-full border bg-white/70 px-4 py-2 text-sm shadow-sm backdrop-blur">
-            👋 Available for Work
-          </span>
+              <h1 className="text-5xl leading-tight font-bold md:text-6xl">
+                Muhammad Ramdani
+              </h1>
 
-          <h1 className="mt-6 text-5xl font-bold md:text-6xl">
-            Muhammad Ramdani
-          </h1>
+              <h3 className="text-xl font-medium text-gray-300 md:text-2xl">
+                Frontend Developer | React Developer
+              </h3>
 
-          <h2 className="mt-3 text-2xl text-gray-600">
-            Frontend Developer | React Developer
-          </h2>
+              <p className="max-w-xl text-justify leading-8 text-gray-400">
+                Saya seorang Front-End Developer yang berfokus pada pembuatan
+                website modern, responsif, dan user friendly menggunakan React
+                dan Tailwind CSS.
+              </p>
 
-          <p className="mt-6 max-w-xl leading-8 text-gray-500">
-            Saya seorang Front-End Developer yang berfokus pada pembuatan
-            website modern, responsif, dan user friendly menggunakan React dan
-            Tailwind CSS.
-          </p>
+              <nav className="mt-2 flex flex-wrap justify-center gap-3 md:justify-start">
+                <span className="rounded-full bg-zinc-800 px-4 py-1 text-sm">
+                  React
+                </span>
 
-          {/* Tech Stack */}
-          <div className="mt-6 flex flex-wrap justify-center gap-2 md:justify-start">
-            <span className="rounded-full border bg-white px-4 py-2">
-              React
-            </span>
-            <span className="rounded-full border bg-white px-4 py-2">
-              Tailwind CSS
-            </span>
-            <span className="rounded-full border bg-white px-4 py-2">
-              JavaScript
-            </span>
-            <span className="rounded-full border bg-white px-4 py-2">
-              Node.js
-            </span>
-          </div>
+                <span className="rounded-full bg-zinc-800 px-4 py-1 text-sm">
+                  Tailwind CSS
+                </span>
 
-          {/* CTA */}
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center md:justify-start">
-            <a
-              href="/cv.pdf"
-              download
-              className="rounded-xl bg-black px-6 py-3 text-center text-white transition hover:-translate-y-1"
-            >
-              Download CV
-            </a>
+                <span className="rounded-full bg-zinc-800 px-4 py-1 text-sm">
+                  JavaScript
+                </span>
 
-            <a
-              href="#projects"
-              className="rounded-xl border bg-white px-6 py-3 text-center transition hover:-translate-y-1"
-            >
-              Lihat Project
-            </a>
-          </div>
-        </section>
+                <span className="rounded-full bg-zinc-800 px-4 py-1 text-sm">
+                  Node.js
+                </span>
+              </nav>
+            </header>
 
-        {/* Photo */}
-        <aside className="flex justify-center md:w-2/5">
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-blue-200/40 blur-3xl" />
+            <footer className="mt-8 flex flex-col items-center gap-4 md:flex-row md:justify-start">
+              <button className="h-11 w-40 rounded-lg bg-white font-medium text-black transition hover:scale-105">
+                Download CV
+              </button>
 
+              <button className="h-11 w-40 rounded-lg border border-gray-600 transition hover:bg-white hover:text-black">
+                Lihat Project
+              </button>
+            </footer>
+          </article>
+
+          {/* Kanan */}
+          <aside>
             <img
               src="/GambarDiri.jpg"
               alt="Muhammad Ramdani"
               className="relative h-72 w-72 rounded-full border-4 border-white object-cover shadow-2xl md:h-96 md:w-96"
             />
-          </div>
-        </aside>
+          </aside>
+        </section>
       </main>
-    </section>
+    </>
   );
 }
