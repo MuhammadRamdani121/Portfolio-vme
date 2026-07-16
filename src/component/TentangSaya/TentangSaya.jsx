@@ -1,7 +1,7 @@
 export default function TentangSayaa() {
   return (
     <>
-      <header className="py-16 text-center">
+      <header className="pb-7 text-center">
         <h1 className="inline-block border-b-2 border-gray-500 pb-2 text-4xl font-bold">
           Tentang Saya
         </h1>

@@ -6,7 +6,7 @@ export default function HeroSectionn() {
           {/* Kiri */}
           <article className="max-w-2xl text-center md:text-left">
             <header className="flex flex-col gap-4">
-              <span className="w-fit rounded-full bg-green-500/10 px-4 py-1 text-sm text-green-400">
+              <span className="w-fit rounded-full bg-green-500/10 px-4 py-1 text-center text-sm text-gray-400">
                 👋 Available for Work
               </span>
 
