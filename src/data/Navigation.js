@@ -2,44 +2,44 @@ export const navigations = {
   portfolio: [
     {
       nama: "Home",
-      path: "/",
+      path: "#home",
     },
     {
       nama: "Tentang Saya",
-      path: "/about",
+      path: "#about",
     },
     {
       nama: "Skills",
-      path: "/about",
+      path: "#skills",
     },
     {
       nama: "Projects",
       children: [
         {
           nama: "Front - End Dev",
-          path: "/projects/web",
+          path: "#projects",
         },
         {
           nama: "Back - End Dev",
-          path: "/projects/ui-clone",
+          path: "#projects",
         },
         {
           nama: "Database",
-          path: "/projects/academic",
+          path: "#projects",
         },
         {
           nama: "Ms Excel",
-          path: "/projects/academic",
+          path: "#projects",
         },
       ],
     },
     {
       nama: "Certificates",
-      path: "/certificates",
+      path: "#sertifikat",
     },
     {
       nama: "Contact",
-      path: "/contact",
+      path: "#contact",
     },
   ],
 

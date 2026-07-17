@@ -14,35 +14,35 @@ import { navigations } from "../data/Navigation";
 export default function Home() {
   return (
     <div>
-      <header className="">
+      <header>
         <MenuNavbar navigation={navigations.portfolio} />
       </header>
-      <main className="">
-        <section className="mt-17 md:mt-2">
+      <main>
+        <section className="mt-17 md:mt-2" id="home">
           <HeroSection />
         </section>
 
-        <section className="">
+        <section className="" id="about">
           <TentangSaya />
         </section>
 
-        <section className="">
+        <section className="" id="education">
           <Pendidikan />
         </section>
 
-        <section>
+        <section id="skills">
           <Skills />
         </section>
 
-        <section>
+        <section id="projects">
           <Project />
         </section>
 
-        <section>
+        <section id="sertifikat">
           <Sertifikat />
         </section>
 
-        <section>
+        <section id="contact">
           <Contact />
         </section>
       </main>
