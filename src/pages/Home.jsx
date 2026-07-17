@@ -1,4 +1,5 @@
 import Contact from "../component/Contact/Contact";
+import Footer from "../component/Footer/Footer";
 import HeroSection from "../component/HeroSection/HeroSection";
 
 import MenuNavbar from "../component/Navbar/MenuNavbar";
@@ -45,6 +46,10 @@ export default function Home() {
           <Contact />
         </section>
       </main>
+
+      <section>
+        <Footer />
+      </section>
     </div>
   );
 }

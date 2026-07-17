@@ -3,7 +3,7 @@ import sertifikat from "../../data/Sertifikat";
 export default function Sertifikat() {
   return (
     <>
-      <header className="mx-auto mt-16 max-w-6xl px-5">
+      <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
         <h1 className="border-b-2 border-blue-500 pb-3 text-center text-4xl font-bold">
           Sertifikat
         </h1>

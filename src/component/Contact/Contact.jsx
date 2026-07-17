@@ -1,7 +1,7 @@
 export default function Contact() {
   return (
     <>
-      <header className="mx-auto max-w-6xl px-5 pt-16">
+      <header className="mx-auto flex max-w-6xl justify-center px-5 pt-16">
         <h1 className="border-b-2 border-blue-500 pb-3 text-center text-4xl font-bold">
           Contact
         </h1>
@@ -60,9 +60,6 @@ export default function Contact() {
               <span className="text-green-600">Chat Saya→</span>
             </a>
           </nav>
-          <footer className="mt-10 border-t pt-6 text-center text-sm text-gray-500">
-            © 2026 Muhammad Ramdani. All Rights Reserved.
-          </footer>
         </section>
       </main>
     </>
