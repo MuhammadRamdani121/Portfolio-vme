@@ -1,8 +1,10 @@
+import Contact from "../component/Contact/Contact";
 import HeroSection from "../component/HeroSection/HeroSection";
 
 import MenuNavbar from "../component/Navbar/MenuNavbar";
 import Pendidikan from "../component/Pendidikan/Pendidikan";
 import Project from "../component/Project/Project";
+import Sertifikat from "../component/Sertifikat/Sertifikat";
 import Skills from "../component/Skills/Skills";
 import TentangSaya from "../component/TentangSaya/TentangSaya";
 
@@ -33,6 +35,14 @@ export default function Home() {
 
         <section>
           <Project />
+        </section>
+
+        <section>
+          <Sertifikat />
+        </section>
+
+        <section>
+          <Contact />
         </section>
       </main>
     </div>

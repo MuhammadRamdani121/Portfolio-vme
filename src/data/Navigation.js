@@ -5,22 +5,30 @@ export const navigations = {
       path: "/",
     },
     {
-      nama: "About",
+      nama: "Tentang Saya",
+      path: "/about",
+    },
+    {
+      nama: "Skills",
       path: "/about",
     },
     {
       nama: "Projects",
       children: [
         {
-          nama: "Web Projects",
+          nama: "Front - End Dev",
           path: "/projects/web",
         },
         {
-          nama: "UI Clone",
+          nama: "Back - End Dev",
           path: "/projects/ui-clone",
         },
         {
-          nama: "Academic Projects",
+          nama: "Database",
+          path: "/projects/academic",
+        },
+        {
+          nama: "Ms Excel",
           path: "/projects/academic",
         },
       ],
