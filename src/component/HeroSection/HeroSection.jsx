@@ -55,12 +55,30 @@ export default function HeroSectionn() {
           </article>
 
           {/* Kanan */}
+          {/* Kanan */}
           <aside>
-            <img
-              src="/GambarDiri.jpg"
-              alt="Muhammad Ramdani"
-              className="relative h-72 w-72 rounded-full border-4 border-white object-cover shadow-2xl md:h-96 md:w-96"
-            />
+            <div className="group relative">
+              <img
+                src="/GambarDiri.jpg"
+                alt="Muhammad Ramdani"
+                className="h-72 w-72 rounded-full border-4 border-white object-cover shadow-2xl transition duration-500 group-hover:scale-105 md:h-96 md:w-96"
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center rounded-full bg-black/70 opacity-0 transition duration-500 group-hover:opacity-100">
+                <h2 className="text-2xl font-bold text-white">
+                  Muhammad Ramdani
+                </h2>
+
+                <p className="text-gray-300">🗓️ 27-November-2001 </p>
+
+                <p className="text-gray-300">📍 Tangerang Selatan</p>
+
+                <span className="mt-4 rounded-full bg-green-500 px-3 py-1 text-sm font-medium text-white">
+                  🚀 Open to Work
+                </span>
+              </div>
+            </div>
           </aside>
         </section>
       </main>

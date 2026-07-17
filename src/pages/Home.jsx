@@ -39,7 +39,7 @@ export default function Home() {
         </section>
 
         <section id="sertifikat">
-          <Sertifikat />
+          <Sertifikat limit={true} />
         </section>
 
         <section id="contact">

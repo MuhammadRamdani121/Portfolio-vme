@@ -1,34 +1,38 @@
+import Sertifikat1 from "../assets/images/Sertifikat/Sertifikat_BNSP_1.webp";
+import Sertifikat2 from "../assets/images/Sertifikat/Sertifikat_BNSP_1.webp";
+import Sertifikat3 from "../assets/images/Sertifikat/Sertifikat_CodingStudio.webp";
+
 const sertifikat = [
   {
     id: 1,
-    title: "Kelas Full Stack",
-    issuer: "Kelas Full Stack",
-    year: "2024",
-    image: "/images/certificate/fullstack.jpg",
+    title: "Junior Programmer",
+    issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
+    year: "2020",
+    image: Sertifikat1,
     description:
-      "Mempelajari pengembangan website dari Front End hingga Back End menggunakan HTML, CSS, JavaScript, React, Node.js, Express, dan MySQL.",
+      "Sertifikat Kompetensi di bidang Pemrograman dan Pengembangan Software dengan kualifikasi Junior Programmer yang diterbitkan oleh Badan Nasional Sertifikasi Profesi (BNSP).",
     credential: "#",
   },
 
   {
     id: 2,
-    title: "Microsoft Excel",
-    issuer: "Codepolitan",
-    year: "2025",
-    image: "/images/certificate/excel.jpg",
+    title: "Programmer",
+    issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
+    year: "2024",
+    image: Sertifikat2,
     description:
-      "Mempelajari Excel mulai dari dasar hingga pembuatan dashboard menggunakan Pivot Table, Pivot Chart, XLOOKUP, dan VLOOKUP.",
+      "Sertifikasi kompetensi Programmer pada bidang Aktivitas Pemrograman, Konsultasi, dan Kegiatan YBDI yang diterbitkan oleh Badan Nasional Sertifikasi Profesi (BNSP).",
     credential: "#",
   },
 
   {
     id: 3,
-    title: "React JS",
-    issuer: "Dicoding",
-    year: "2026",
-    image: "/images/certificate/react.jpg",
+    title: "Fundamental Front-End Web Development",
+    issuer: "Coding Studio",
+    year: "2024",
+    image: Sertifikat3,
     description:
-      "Membangun aplikasi React menggunakan component, state, props, routing, dan API.",
+      "Sertifikat penyelesaian kursus Fundamental Front-End Web Development dari Coding Studio.",
     credential: "#",
   },
 ];
