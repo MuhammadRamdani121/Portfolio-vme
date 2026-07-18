@@ -54,7 +54,7 @@ export default function Sertifikat({ limit = false }) {
                   className={`mt-4 flex-1 overflow-hidden text-sm leading-6 text-zinc-400 transition-all duration-500 ${
                     activeCard === item.id
                       ? "max-h-60"
-                      : "max-h-[72px] md:group-hover:max-h-60"
+                      : "max-h-18 md:group-hover:max-h-60"
                   }`}
                 >
                   {item.description}
