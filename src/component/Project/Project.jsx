@@ -1,72 +1,100 @@
+import { Link } from "react-router-dom";
 import projects from "../../data/Project";
 
-export default function Project() {
+export default function Project({ limit = false }) {
   return (
-    <main className="mx-auto max-w-6xl px-5 py-16">
-      <header className="mb-12 flex justify-center">
+    <>
+      <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
         <h1 className="border-b-2 border-blue-500 pb-3 text-center text-4xl font-bold">
           Projects
         </h1>
       </header>
 
-      {projects.map((category) => (
-        <section
-          key={category.id}
-          className="mb-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-        >
-          {/* Judul Kategori */}
-          <header className="col-span-full">
-            <h1 className="text-3xl font-bold text-gray-800">
-              {category.category}
-            </h1>
-          </header>
+      <main className="mx-auto max-w-6xl px-5 py-12">
+        {projects.map((category) => {
+          const data = limit
+            ? category.projects.slice(0, 3)
+            : category.projects;
 
-          {/* Maksimal tampil 3 project */}
-          {category.projects.slice(0, 3).map((project) => (
-            <article
-              key={project.id}
-              className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="h-52 w-full object-cover"
-              />
+          return (
+            <section key={category.id} className="mb-16">
+              {/* Judul Kategori */}
+              <header className="mb-8">
+                <h2 className="text-3xl font-bold text-black">
+                  {category.category}
+                </h2>
+              </header>
 
-              <nav className="space-y-3 p-5">
-                <span className="block text-xl font-bold text-gray-800">
-                  {project.title}
-                </span>
+              {/* Card */}
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {data.map((item) => (
+                  <article
+                    key={item.id}
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-700 bg-zinc-900 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 hover:shadow-2xl"
+                  >
+                    {/* Gambar */}
+                    <div className="flex h-56 items-center justify-center overflow-hidden bg-zinc-800">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                    </div>
 
-                <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700">
-                  {project.tech}
-                </span>
+                    {/* Isi */}
+                    <div className="flex flex-1 flex-col p-5">
+                      <h2 className="text-xl font-bold text-white">
+                        {item.title}
+                      </h2>
 
-                <p className="text-sm leading-6 text-gray-600">
-                  {project.description}
-                </p>
-              </nav>
+                      <span className="mt-3 w-fit rounded-full bg-blue-500/20 px-3 py-1 text-sm font-medium text-blue-300">
+                        {item.tech}
+                      </span>
 
-              <footer className="flex gap-3 p-5 pt-0">
-                <button className="flex-1 rounded-lg bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700">
-                  Live Demo
-                </button>
+                      <p className="mt-4 flex-1 text-sm leading-6 text-zinc-400">
+                        {item.description}
+                      </p>
 
-                <button className="flex-1 rounded-lg border border-gray-300 py-2 font-semibold text-gray-700 hover:bg-gray-100">
-                  GitHub
-                </button>
-              </footer>
-            </article>
-          ))}
+                      {/* Button */}
+                      <footer className="mt-6 flex gap-3">
+                        <a
+                          href={item.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 rounded-lg bg-blue-600 py-2 text-center font-semibold text-white transition hover:bg-blue-700"
+                        >
+                          Live Demo
+                        </a>
 
-          {/* Lihat Selengkapnya */}
-          <footer className="col-span-full text-right">
-            <button className="font-semibold text-blue-600 transition hover:text-blue-800">
-              Lihat Selengkapnya →
-            </button>
-          </footer>
-        </section>
-      ))}
-    </main>
+                        <a
+                          href={item.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 rounded-lg border border-blue-500 py-2 text-center font-semibold text-blue-400 transition hover:bg-blue-500 hover:text-white"
+                        >
+                          GitHub
+                        </a>
+                      </footer>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              {/* Lihat Selengkapnya */}
+              {limit && (
+                <footer className="mt-10 flex justify-end">
+                  <Link
+                    to="/project"
+                    className="font-semibold text-blue-400 transition hover:text-blue-300"
+                  >
+                    Lihat Selengkapnya →
+                  </Link>
+                </footer>
+              )}
+            </section>
+          );
+        })}
+      </main>
+    </>
   );
 }

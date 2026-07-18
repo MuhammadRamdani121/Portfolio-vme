@@ -35,7 +35,7 @@ export default function Home() {
         </section>
 
         <section id="projects">
-          <Project />
+          <Project limit={true} />
         </section>
 
         <section id="sertifikat">
