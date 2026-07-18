@@ -1,31 +1,31 @@
-import Sertifikat1 from "../assets/images/Project/Dekstop.webp";
-import Sertifikat2 from "../assets/images/Project/Portfolio.webp";
+import JavaDesktop from "../assets/images/Project/Dekstop.webp";
+import WebsiteGaleri from "../assets/images/Project/Portfolio.webp";
 
 const projects = [{
         id: 1,
         category: "💻 Front End Development",
         projects: [{
-                id: 1,
-                title: "Website Portfolio",
-                image: Sertifikat1,
-                tech: "React • Tailwind CSS",
-                description: "Portfolio pribadi yang dibuat menggunakan React dan Tailwind CSS dengan desain responsif.",
+                id: 3,
+                title: "Aplikasi Desktop Pendataan Rumah",
+                image: JavaDesktop,
+                tech: "Java Swing • MySQL",
+                description: "Aplikasi desktop berbasis Java Swing untuk mengelola data rumah, mulai dari input, pencarian, pembaruan, hingga penghapusan data yang terhubung dengan database MySQL.",
                 demo: "#",
                 github: "#",
             },
             {
                 id: 2,
-                title: "Landing Page",
-                image: Sertifikat2,
-                tech: "HTML • CSS",
-                description: "Landing page perusahaan.",
+                title: "Website Galeri Kegiatan",
+                image: WebsiteGaleri,
+                tech: "HTML • CSS • JavaScript",
+                description: "Website galeri kegiatan yang menampilkan dokumentasi berbagai acara dengan tampilan card, gambar, deskripsi, dan halaman detail setiap kegiatan.",
                 demo: "#",
                 github: "#",
             },
             {
                 id: 3,
                 title: "Dashboard Admin",
-                image: Sertifikat2,
+                image: WebsiteGaleri,
                 tech: "React",
                 description: "Dashboard admin modern.",
                 demo: "#",
