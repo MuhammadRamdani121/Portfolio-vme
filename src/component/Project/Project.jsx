@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
 import projects from "../../data/Project";
 
-export default function Project({ limit = false }) {
+export default function Project({ limit = false, portfolio = false }) {
+  const gridClass = portfolio
+    ? "grid gap-8 md:grid-cols-2"
+    : "grid gap-8 md:grid-cols-2 lg:grid-cols-3";
+
   return (
     <>
-      <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
-        <h1 className="border-b-2 border-blue-500 pb-3 text-center text-4xl font-bold">
-          Projects
-        </h1>
-      </header>
+      {!portfolio && (
+        <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
+          <h1 className="border-b-2 border-blue-500 pb-3 text-center text-4xl font-bold">
+            Projects
+          </h1>
+        </header>
+      )}
 
       <main className="mx-auto max-w-6xl px-5 py-12">
         {projects.map((category) => {
@@ -26,7 +32,7 @@ export default function Project({ limit = false }) {
               </header>
 
               {/* Card */}
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className={gridClass}>
                 {data.map((item) => (
                   <article
                     key={item.id}
@@ -84,7 +90,7 @@ export default function Project({ limit = false }) {
               {limit && (
                 <footer className="mt-10 flex justify-end">
                   <Link
-                    to="/project"
+                    to="/portfolio/project"
                     className="font-semibold text-blue-400 transition hover:text-blue-300"
                   >
                     Lihat Selengkapnya →
