@@ -1,82 +1,87 @@
 export default function Pendidikan() {
+  const education = [
+    {
+      year: "2020 - 2024",
+      degree: "S1 Teknik Informatika",
+      school: "Universitas Pamulang",
+      description:
+        "Mempelajari pengembangan perangkat lunak, pemrograman, basis data, dan pengembangan aplikasi berbasis web.",
+      details: ["IPK: 3.59", "Fokus: Web Development", "Lulus: 2024"],
+    },
+    {
+      year: "2017 - 2020",
+      degree: "Rekayasa Perangkat Lunak",
+      school: "SMK Letris Indonesia 2",
+      description:
+        "Mempelajari dasar pemrograman, pengembangan aplikasi, basis data, dan konsep pengembangan perangkat lunak.",
+      details: ["Jurusan: Rekayasa Perangkat Lunak", "Lulus: 2020"],
+    },
+    {
+      year: "2014 - 2017",
+      degree: "Sekolah Menengah Pertama",
+      school: "SMP AT-Taqwa",
+      description:
+        "Menempuh pendidikan tingkat menengah pertama sebagai dasar pendidikan sebelum melanjutkan ke jenjang kejuruan.",
+      details: ["Lulus: 2017"],
+    },
+  ];
+
   return (
-    <>
-      <main className="mx-auto max-w-5xl px-5 py-16">
-        <header className="flex justify-center">
-          <h1 className="mb-12 border-b-2 border-gray-500 pb-3 text-center text-4xl font-bold">
-            Pendidikan
-          </h1>
-        </header>
+    <section className="px-6 py-20">
+      {/* Header */}
+      <header className="mb-12 text-center">
+        <h1 className="inline-block border-b-2 border-[#508D4E] pb-2 text-4xl font-bold text-[#1A5319]">
+          Pendidikan
+        </h1>
 
-        {/* S1 */}
-        <section className="mb-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:shadow-xl">
-          <h1 className="text-2xl font-bold text-gray-800">
-            🎓 S1 Teknik Informatika - Universitas Pamulang
-          </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-[#508D4E]">
+          Riwayat pendidikan dan pengalaman belajar yang membentuk dasar
+          pengetahuan saya di bidang teknologi dan pengembangan perangkat lunak.
+        </p>
+      </header>
 
-          <h3 className="mt-2 text-sm font-medium text-gray-600 md:text-base">
-            2020 - 2024
-          </h3>
+      {/* Timeline */}
+      <main className="mx-auto max-w-4xl">
+        <div className="relative border-l-2 border-[#80AF81] pl-8">
+          {education.map((item, index) => (
+            <article
+              key={index}
+              className="relative mb-10 rounded-2xl border border-[#80AF81] bg-[#D6EFD8] p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+            >
+              {/* Timeline Dot */}
+              <span className="absolute top-7 -left-[43px] h-5 w-5 rounded-full border-4 border-[#D6EFD8] bg-[#508D4E]" />
 
-          <p className="mt-4 text-justify leading-7 text-gray-600">
-            Menyelesaikan pendidikan Sarjana Teknik Informatika dengan fokus
-            pada pengembangan perangkat lunak, basis data, dan aplikasi berbasis
-            web. Selama perkuliahan aktif mengerjakan berbagai proyek akademik
-            yang berkaitan dengan pemrograman, analisis sistem, dan pengelolaan
-            database.
-          </p>
+              {/* Tahun */}
+              <span className="inline-block rounded-full bg-[#80AF81] px-4 py-1 text-sm font-semibold text-[#1A5319]">
+                {item.year}
+              </span>
 
-          <ul className="mt-5 list-inside list-disc space-y-2 text-gray-700">
-            <li>
-              IPK: <strong>3.59 / 4.00</strong>
-            </li>
-            <li>Mempelajari HTML, CSS, JavaScript, React, PHP, Laravel.</li>
-            <li>Menggunakan MySQL dan Microsoft SQL Server.</li>
-            <li>Membuat proyek aplikasi desktop dan aplikasi web.</li>
-            <li>Mempelajari analisis sistem, UI/UX, dan basis data.</li>
-          </ul>
-        </section>
+              {/* Pendidikan */}
+              <h2 className="mt-4 text-2xl font-bold text-[#1A5319]">
+                {item.degree}
+              </h2>
 
-        {/* SMK */}
-        <section className="mb-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:shadow-xl">
-          <h1 className="text-2xl font-bold text-gray-800">
-            🎓 SMK Letris Indonesia 2
-          </h1>
+              <h3 className="mt-1 text-lg font-semibold text-[#508D4E]">
+                {item.school}
+              </h3>
 
-          <h3 className="mt-2 text-sm font-medium text-gray-600 md:text-base">
-            2017 - 2020
-          </h3>
-
-          <p className="mt-4 text-justify leading-7 text-gray-600">
-            Mengambil jurusan Rekayasa Perangkat Lunak (RPL) dan mempelajari
-            dasar-dasar pemrograman, database, serta pengembangan aplikasi.
-          </p>
-
-          <ul className="mt-5 list-inside list-disc space-y-2 text-gray-700">
-            <li>Jurusan Rekayasa Perangkat Lunak (RPL).</li>
-            <li>Belajar Java, PHP, HTML, CSS, dan MySQL.</li>
-            <li>Membuat aplikasi sederhana sebagai proyek pembelajaran.</li>
-            <li>Memahami dasar algoritma dan logika pemrograman.</li>
-          </ul>
-        </section>
-
-        {/* SMP */}
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:shadow-xl">
-          <h1 className="text-2xl font-bold text-gray-800">
-            🎓 SMP Islam AT-Taqwa
-          </h1>
-
-          <h3 className="mt-2 text-sm font-medium text-gray-600 md:text-base">
-            2014 - 2017
-          </h3>
-
-          <p className="mt-4 text-justify leading-7 text-gray-600">
-            Menyelesaikan pendidikan menengah pertama serta mulai mengenal
-            teknologi informasi dan penggunaan komputer sebagai dasar untuk
-            melanjutkan pendidikan di bidang Rekayasa Perangkat Lunak.
-          </p>
-        </section>
+              <p className="mt-4 leading-7 text-[#508D4E]">
+                {item.description}
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {item.details?.map((detail) => (
+                  <span
+                    key={detail}
+                    className="rounded-full bg-[#80AF81] px-3 py-1 text-sm font-medium text-[#1A5319]"
+                  >
+                    {detail}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
       </main>
-    </>
+    </section>
   );
 }

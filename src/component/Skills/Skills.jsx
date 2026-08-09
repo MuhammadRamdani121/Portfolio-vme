@@ -1,92 +1,73 @@
+const skillCategories = [
+  {
+    title: "Front-End",
+    icon: "🎨",
+    skills: ["HTML", "CSS", "JavaScript", "React.js", "Tailwind CSS"],
+  },
+  {
+    title: "Back-End",
+    icon: "⚙️",
+    skills: ["PHP", "Laravel", "Node.js", "Express.js"],
+  },
+  {
+    title: "Database",
+    icon: "🗄️",
+    skills: ["MySQL", "Microsoft SQL Server"],
+  },
+  {
+    title: "Tools & Others",
+    icon: "🛠️",
+    skills: ["Git", "GitHub", "Vite", "React Router"],
+  },
+];
+
 export default function Skills() {
   return (
-    <>
-      <main className="mx-auto max-w-6xl px-5 py-16">
-        <header className="mb-12 flex justify-center">
-          <h1 className="border-b-2 border-gray-500 pb-3 text-center text-4xl font-bold">
-            Skills
-          </h1>
-        </header>
+    <section className="px-6 py-20">
+      {/* Header */}
+      <header className="mb-12 text-center">
+        <h1 className="inline-block border-b-2 border-[#508D4E] pb-2 text-4xl font-bold text-[#1A5319]">
+          Skills
+        </h1>
 
-        {/* Front End */}
-        <section className="mb-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:shadow-xl">
-          <h1 className="mb-5 text-2xl font-bold text-gray-800">
-            💻 Front End
-          </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-[#508D4E]">
+          Teknologi dan tools yang saya gunakan dalam proses belajar dan
+          pengembangan project.
+        </p>
+      </header>
 
-          <div className="flex flex-wrap gap-3">
-            <p className="rounded-full bg-orange-100 px-4 py-2 font-medium text-orange-700">
-              HTML5
-            </p>
-            <p className="rounded-full bg-gray-100 px-4 py-2 font-medium text-gray-700">
-              CSS3
-            </p>
-            <p className="rounded-full bg-sky-100 px-4 py-2 font-medium text-sky-700">
-              Tailwind CSS
-            </p>
-            <p className="rounded-full bg-cyan-100 px-4 py-2 font-medium text-cyan-700">
-              React.js
-            </p>
-            <p className="rounded-full bg-yellow-100 px-4 py-2 font-medium text-yellow-700">
-              JavaScript
-            </p>
-          </div>
-        </section>
+      {/* Skill Cards */}
+      <main className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
+        {skillCategories.map((category) => (
+          <article
+            key={category.title}
+            className="rounded-3xl border border-[#80AF81] bg-[#D6EFD8] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            {/* Category */}
+            <header className="mb-6 flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#80AF81] text-2xl">
+                {category.icon}
+              </span>
 
-        {/* Back End */}
-        <section className="mb-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:shadow-xl">
-          <h1 className="mb-5 text-2xl font-bold text-gray-800">⚙️ Back End</h1>
+              <h2 className="text-2xl font-bold text-[#1A5319]">
+                {category.title}
+              </h2>
+            </header>
 
-          <div className="flex flex-wrap gap-3">
-            <p className="rounded-full bg-indigo-100 px-4 py-2 font-medium text-indigo-700">
-              PHP
-            </p>
-            <p className="rounded-full bg-red-100 px-4 py-2 font-medium text-red-700">
-              Laravel
-            </p>
-            <p className="rounded-full bg-green-100 px-4 py-2 font-medium text-green-700">
-              Node.js
-            </p>
-            <p className="rounded-full bg-gray-100 px-4 py-2 font-medium text-gray-700">
-              Express.js
-            </p>
-          </div>
-        </section>
-
-        {/* Database */}
-        <section className="mb-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:shadow-xl">
-          <h1 className="mb-5 text-2xl font-bold text-gray-800">🗄️ Database</h1>
-
-          <div className="flex flex-wrap gap-3">
-            <p className="rounded-full bg-gray-100 px-4 py-2 font-medium text-gray-700">
-              MySQL
-            </p>
-            <p className="rounded-full bg-purple-100 px-4 py-2 font-medium text-purple-700">
-              Microsoft SQL Server
-            </p>
-          </div>
-        </section>
-
-        {/* Tools */}
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:shadow-xl">
-          <h1 className="mb-5 text-2xl font-bold text-gray-800">🛠️ Tools</h1>
-
-          <div className="flex flex-wrap gap-3">
-            <p className="rounded-full bg-gray-100 px-4 py-2 font-medium text-gray-700">
-              Git
-            </p>
-            <p className="rounded-full bg-black px-4 py-2 font-medium text-white">
-              GitHub
-            </p>
-            <p className="rounded-full bg-gray-100 px-4 py-2 font-medium text-gray-700">
-              VS Code
-            </p>
-            <p className="rounded-full bg-green-100 px-4 py-2 font-medium text-green-700">
-              Microsoft Excel
-            </p>
-          </div>
-        </section>
+            {/* Skills */}
+            <nav className="flex flex-wrap gap-3">
+              {category.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full border border-[#508D4E] bg-[#D6EFD8] px-4 py-2 text-sm font-medium text-[#1A5319] transition duration-300 hover:bg-[#508D4E] hover:text-white"
+                >
+                  {skill}
+                </span>
+              ))}
+            </nav>
+          </article>
+        ))}
       </main>
-    </>
+    </section>
   );
 }
