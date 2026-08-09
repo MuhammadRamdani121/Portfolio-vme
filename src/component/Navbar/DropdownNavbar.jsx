@@ -28,7 +28,7 @@ export default function DropdownNavbar({ nama, children, mobile = false }) {
 
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 py-2">
+      <button className="hover:bg-text-white flex items-center gap-1 py-2 text-[#D6EFD8] transition">
         {nama}
 
         <span className="inline-block transition-transform duration-200 group-hover:rotate-90">
@@ -36,7 +36,7 @@ export default function DropdownNavbar({ nama, children, mobile = false }) {
         </span>
       </button>
 
-      <div className="absolute top-full left-0 hidden min-w-44 flex-col rounded-lg border bg-white py-2 shadow-lg group-hover:flex">
+      <div className="absolute top-full left-0 hidden min-w-44 flex-col rounded-lg border bg-white py-2 text-black shadow-lg group-hover:flex">
         {children}
       </div>
     </div>

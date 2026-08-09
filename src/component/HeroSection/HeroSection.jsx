@@ -25,19 +25,19 @@ export default function HeroSectionn() {
               </p>
 
               <nav className="mt-2 flex flex-wrap justify-center gap-3 md:justify-start">
-                <span className="rounded-full bg-zinc-800 px-4 py-1 text-sm">
+                <span className="rounded-full bg-gray-300 px-4 py-1 text-sm">
                   React
                 </span>
 
-                <span className="rounded-full bg-zinc-800 px-4 py-1 text-sm">
+                <span className="rounded-full bg-gray-300 px-4 py-1 text-sm">
                   Tailwind CSS
                 </span>
 
-                <span className="rounded-full bg-zinc-800 px-4 py-1 text-sm">
+                <span className="rounded-full bg-gray-300 px-4 py-1 text-sm">
                   JavaScript
                 </span>
 
-                <span className="rounded-full bg-zinc-800 px-4 py-1 text-sm">
+                <span className="rounded-full bg-gray-300 px-4 py-1 text-sm">
                   Node.js
                 </span>
               </nav>

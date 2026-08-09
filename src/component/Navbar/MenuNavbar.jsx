@@ -28,9 +28,9 @@ export default function MenuNavbar({ navigation }) {
   }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b bg-white shadow-sm">
+    <header className="fixed top-0 z-50 w-full border-b bg-[#1A5319] shadow-sm">
       <section className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <h1 className="text-2xl font-bold text-blue-500">Ramdani</h1>
+        <h1 className="text-2xl font-bold text-white">MR</h1>
 
         {/* Desktop */}
         <nav className="hidden items-center gap-8 md:flex">
@@ -64,7 +64,7 @@ export default function MenuNavbar({ navigation }) {
         {/* Hamburger */}
         <button
           onClick={() => setOpenMenu(!openMenu)}
-          className="rounded-lg p-2 text-3xl hover:bg-gray-100 md:hidden"
+          className="rounded-lg p-2 text-3xl hover:bg-black md:hidden"
         >
           {openMenu ? "✕" : "☰"}
         </button>

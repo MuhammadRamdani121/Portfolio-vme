@@ -14,24 +14,7 @@ export const navigations = {
     },
     {
       nama: "Projects",
-      children: [
-        {
-          nama: "Front - End Dev",
-          path: "#projects",
-        },
-        {
-          nama: "Back - End Dev",
-          path: "#projects",
-        },
-        {
-          nama: "Database",
-          path: "#projects",
-        },
-        {
-          nama: "Ms Excel",
-          path: "#projects",
-        },
-      ],
+      path: "#projects",
     },
     {
       nama: "Certificates",

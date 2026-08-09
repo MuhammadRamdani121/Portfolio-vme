@@ -15,7 +15,7 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
     <>
       {!portfolio && (
         <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
-          <h1 className="border-b-2 border-blue-500 pb-3 text-center text-4xl font-bold">
+          <h1 className="border-b-2 border-black pb-3 text-center text-4xl font-bold">
             Sertifikat
           </h1>
         </header>
@@ -29,10 +29,10 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
               onClick={() =>
                 setActiveCard(activeCard === item.id ? null : item.id)
               }
-              className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-zinc-700 bg-zinc-900 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 hover:shadow-2xl"
+              className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-zinc-700 bg-black shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 hover:shadow-2xl"
             >
               {/* Gambar */}
-              <div className="flex h-56 items-center justify-center overflow-hidden bg-zinc-800">
+              <div className="flex h-56 items-center justify-center overflow-hidden bg-white">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -53,7 +53,7 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
                     </p>
                   </div>
 
-                  <span className="rounded-full bg-blue-500/20 px-3 py-1 text-sm font-medium text-blue-300">
+                  <span className="rounded-full bg-gray-300 px-3 py-1 text-sm font-medium text-black">
                     {item.year}
                   </span>
                 </div>

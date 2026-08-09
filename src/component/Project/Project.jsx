@@ -36,10 +36,10 @@ export default function Project({ limit = false, portfolio = false }) {
                 {data.map((item) => (
                   <article
                     key={item.id}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-700 bg-zinc-900 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 hover:shadow-2xl"
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 hover:shadow-2xl"
                   >
                     {/* Gambar */}
-                    <div className="flex h-56 items-center justify-center overflow-hidden bg-zinc-800">
+                    <div className="flex h-56 items-center justify-center overflow-hidden bg-gray-300">
                       <img
                         src={item.image}
                         alt={item.title}
@@ -49,11 +49,11 @@ export default function Project({ limit = false, portfolio = false }) {
 
                     {/* Isi */}
                     <div className="flex flex-1 flex-col p-5">
-                      <h2 className="text-xl font-bold text-white">
+                      <h2 className="text-xl font-bold text-black">
                         {item.title}
                       </h2>
 
-                      <span className="mt-3 w-fit rounded-full bg-blue-500/20 px-3 py-1 text-sm font-medium text-blue-300">
+                      <span className="mt-3 w-fit rounded-full bg-gray-300 px-3 py-1 text-sm font-medium text-black">
                         {item.tech}
                       </span>
 

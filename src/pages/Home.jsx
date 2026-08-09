@@ -17,32 +17,32 @@ export default function Home() {
       <header>
         <MenuNavbar navigation={navigations.portfolio} />
       </header>
-      <main>
-        <section className="mt-17 md:mt-2" id="home">
+      <main className="bg-[#F5FAF5]">
+        <section className="mt-17 bg-[#D6EFD8] md:mt-2" id="home">
           <HeroSection />
         </section>
 
-        <section className="" id="about">
+        <section className="bg-[#F5FAF5]" id="about">
           <TentangSaya />
         </section>
 
-        <section className="" id="education">
+        <section className="bg-[#D6EFD8]" id="education">
           <Pendidikan />
         </section>
 
-        <section id="skills">
+        <section className="bg-[#F5FAF5]" id="skills">
           <Skills />
         </section>
 
-        <section id="projects">
+        <section className="bg-[#D6EFD8]" id="projects">
           <Project limit={true} />
         </section>
 
-        <section id="sertifikat">
+        <section className="bg-[#F5FAF5]" id="sertifikat">
           <Sertifikat limit={true} />
         </section>
 
-        <section id="contact">
+        <section className="bg-[#D6EFD8]" id="contact">
           <Contact />
         </section>
       </main>
