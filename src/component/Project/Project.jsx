@@ -11,14 +11,14 @@ export default function Project({ limit = false, portfolio = false }) {
       {/* ========================= */}
 
       {!portfolio && (
-        <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
-          <h1 className="border-b-2 border-[#508D4E] pb-3 text-center text-4xl font-bold text-[#1A5319]">
+        <header className="mx-auto flex max-w-6xl justify-center px-5">
+          <h1 className="mt-16 border-b-2 border-[#508D4E] text-center text-4xl font-bold text-[#1A5319]">
             Projects
           </h1>
         </header>
       )}
 
-      <main className="mx-auto max-w-6xl px-5 py-12">
+      <main className="mx-auto max-w-6xl px-5 pb-12">
         {/* ========================= */}
         {/* SUBTITLE */}
         {/* ========================= */}

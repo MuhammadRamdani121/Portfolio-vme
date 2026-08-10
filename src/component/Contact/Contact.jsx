@@ -2,8 +2,8 @@ export default function Contact() {
   return (
     <>
       {/* ==================== TITLE ==================== */}
-      <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
-        <h1 className="border-b-2 border-[#508D4E] pb-3 text-center text-4xl font-bold text-[#1A5319]">
+      <header className="mx-auto flex max-w-6xl justify-center px-5">
+        <h1 className="mt-16 border-b-2 border-[#508D4E] pb-3 text-center text-4xl font-bold text-[#1A5319]">
           Contact
         </h1>
       </header>
