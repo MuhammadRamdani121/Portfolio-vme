@@ -35,6 +35,16 @@ const sertifikat = [
       "Sertifikat penyelesaian kursus Fundamental Front-End Web Development dari Coding Studio.",
     credential: "#",
   },
+  {
+    id: 4,
+    title: "Fundamental Front-End Web Development",
+    issuer: "Coding Studio",
+    year: "2024",
+    image: Sertifikat3,
+    description:
+      "Sertifikat penyelesaian kursus Fundamental Front-End Web Development dari Coding Studio.",
+    credential: "#",
+  },
 ];
 
 export default sertifikat;

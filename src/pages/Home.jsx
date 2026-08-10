@@ -13,43 +13,50 @@ import { navigations } from "../data/Navigation";
 
 export default function Home() {
   return (
-    <div>
-      <header>
-        <MenuNavbar navigation={navigations.portfolio} />
-      </header>
-      <main className="bg-[#F5FAF5]">
-        <section className="mt-17 bg-[#D6EFD8] md:mt-2" id="home">
-          <HeroSection />
-        </section>
+    <div className="min-h-screen bg-[#F5FAF5] text-[#1A5319]">
+      {/* ==================== NAVBAR ==================== */}
+      <MenuNavbar navigation={navigations.portfolio} />
 
-        <section className="bg-[#F5FAF5]" id="about">
+      {/* ==================== HERO ==================== */}
+      <header id="home" className="pt-16 md:pt-0">
+        <HeroSection />
+      </header>
+
+      {/* ==================== MAIN CONTENT ==================== */}
+      <main>
+        {/* ==================== ABOUT ==================== */}
+        <section id="about" className="scroll-mt-20 bg-[#F5FAF5]">
           <TentangSaya />
         </section>
 
-        <section className="bg-[#D6EFD8]" id="education">
+        {/* ==================== EDUCATION ==================== */}
+        <section id="education" className="scroll-mt-20 bg-[#D6EFD8]">
           <Pendidikan />
         </section>
 
-        <section className="bg-[#F5FAF5]" id="skills">
+        {/* ==================== SKILLS ==================== */}
+        <section id="skills" className="scroll-mt-20 bg-[#F5FAF5]">
           <Skills />
         </section>
 
-        <section className="bg-[#D6EFD8]" id="projects">
+        {/* ==================== PROJECTS ==================== */}
+        <section id="projects" className="scroll-mt-20 bg-[#D6EFD8]">
           <Project limit={true} />
         </section>
 
-        <section className="bg-[#F5FAF5]" id="sertifikat">
+        {/* ==================== SERTIFIKAT ==================== */}
+        <section id="sertifikat" className="scroll-mt-20 bg-[#F5FAF5]">
           <Sertifikat limit={true} />
         </section>
 
-        <section className="bg-[#D6EFD8]" id="contact">
+        {/* ==================== CONTACT ==================== */}
+        <section id="contact" className="scroll-mt-20 bg-[#D6EFD8]">
           <Contact />
         </section>
       </main>
 
-      <section>
-        <Footer />
-      </section>
+      {/* ==================== FOOTER ==================== */}
+      <Footer />
     </div>
   );
 }

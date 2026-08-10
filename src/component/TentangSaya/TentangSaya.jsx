@@ -1,7 +1,7 @@
 export default function TentangSayaa() {
   return (
     <>
-      <header className="pb-7 text-center">
+      <header className="px-6 pt-15 pb-2 text-center">
         <h1 className="inline-block border-b-2 border-[#508D4E] pb-2 text-4xl font-bold text-[#1A5319]">
           Tentang Saya
         </h1>
