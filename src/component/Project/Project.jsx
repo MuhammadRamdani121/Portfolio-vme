@@ -1,38 +1,26 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import projects from "../../data/Project";
 
 export default function Project({ limit = false, portfolio = false }) {
   return (
     <>
-      {/* ========================= */}
-      {/* TITLE */}
-      {/* ========================= */}
-
       {!portfolio && (
-        <header className="mx-auto flex max-w-6xl justify-center px-5">
-          <h1 className="mt-16 border-b-2 border-[#508D4E] text-center text-4xl font-bold text-[#1A5319]">
+        <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
+          <h1 className="border-b-2 border-[#508D4E] pt-10 text-center text-4xl font-bold text-[#1A5319]">
             Projects
           </h1>
         </header>
       )}
 
-      <main className="mx-auto max-w-6xl px-5 pb-12">
-        {/* ========================= */}
-        {/* SUBTITLE */}
-        {/* ========================= */}
-
+      <main className="mx-auto max-w-6xl px-5 pt-6 pb-12">
         {!portfolio && (
           <p className="mx-auto mb-12 max-w-2xl text-center text-[#508D4E]">
             Beberapa project yang pernah saya kerjakan dalam proses belajar dan
             pengembangan kemampuan di bidang teknologi.
           </p>
         )}
-
-        {/* ========================= */}
-        {/* CATEGORY */}
-        {/* ========================= */}
 
         {projects.map((category) => {
           if (!category.projects?.length) {
@@ -52,94 +40,81 @@ export default function Project({ limit = false, portfolio = false }) {
   );
 }
 
-/* ================================= */
-/* PROJECT CATEGORY */
-/* ================================= */
-
 function ProjectCategory({ category, limit }) {
   const [startIndex, setStartIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
 
   const projectList = category.projects;
   const totalProjects = projectList.length;
 
-  /*
-   * Jumlah card berdasarkan ukuran layar:
-   *
-   * Mobile  = 1
-   * Tablet  = 2
-   * Desktop = 3
-   *
-   * Karena jumlah card berbeda berdasarkan breakpoint,
-   * batas carousel akan dihitung berdasarkan jumlah
-   * project yang sedang terlihat.
-   */
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (window.innerWidth < 768) {
+        // Mobile
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        // Tablet
+        setVisibleCount(2);
+      } else {
+        // Desktop
+        setVisibleCount(3);
+      }
+    };
+
+    updateVisibleCount();
+
+    window.addEventListener("resize", updateVisibleCount);
+
+    return () => {
+      window.removeEventListener("resize", updateVisibleCount);
+    };
+  }, []);
+
+  const maxIndex = Math.max(totalProjects - visibleCount, 0);
 
   /*
-   * Untuk desktop kita jadikan 3 sebagai batas utama.
-   * Mobile/tablet akan dibatasi melalui CSS.
-   */
-  const maxIndex = Math.max(totalProjects - 3, 0);
-
-  /*
-   * Ambil maksimal 3 project.
+   * Jangan melakukan setState di useEffect.
    *
-   * CSS akan menentukan berapa yang terlihat:
-   *
-   * Mobile  → 1
-   * Tablet  → 2
-   * Desktop → 3
+   * Kalau ukuran layar berubah dan startIndex
+   * melewati batas, kita cukup gunakan safeIndex
+   * untuk menentukan card yang ditampilkan.
    */
 
-  const visibleProjects = projectList.slice(startIndex, startIndex + 3);
+  const safeIndex = Math.min(startIndex, maxIndex);
 
-  /* ========================= */
-  /* NEXT */
-  /* ========================= */
+  const visibleProjects = projectList.slice(
+    safeIndex,
+    safeIndex + visibleCount,
+  );
 
   const handleNext = () => {
-    if (startIndex < maxIndex) {
-      setStartIndex((prev) => prev + 1);
+    if (safeIndex < maxIndex) {
+      setStartIndex((prev) => Math.min(prev + 1, maxIndex));
     }
   };
 
-  /* ========================= */
-  /* PREVIOUS */
-  /* ========================= */
-
   const handlePrevious = () => {
-    if (startIndex > 0) {
-      setStartIndex((prev) => prev - 1);
+    if (safeIndex > 0) {
+      setStartIndex((prev) => Math.max(prev - 1, 0));
     }
   };
 
   return (
     <section className="mb-16">
-      {/* ========================= */}
-      {/* CATEGORY TITLE */}
-      {/* ========================= */}
-
       <header className="mb-8">
         <h2 className="text-2xl font-bold text-[#1A5319]">
           {category.category}
         </h2>
       </header>
 
-      {/* ========================= */}
-      {/* CAROUSEL */}
-      {/* ========================= */}
-
       <div className="relative px-6 md:px-8">
-        {/* ========================= */}
-        {/* LEFT ARROW */}
-        {/* ========================= */}
-
         <button
           type="button"
           onClick={handlePrevious}
-          disabled={startIndex === 0}
+          disabled={safeIndex === 0}
           aria-label="Project sebelumnya"
           className={`absolute top-1/2 left-0 z-20 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-lg font-bold shadow-md transition md:h-11 md:w-11 md:text-xl ${
-            startIndex === 0
+            safeIndex === 0
               ? "cursor-not-allowed border-[#80AF81] bg-[#D6EFD8] text-[#80AF81] opacity-40"
               : "border-[#80AF81] bg-[#D6EFD8] text-[#1A5319] hover:bg-[#508D4E] hover:text-[#D6EFD8]"
           }`}
@@ -147,20 +122,12 @@ function ProjectCategory({ category, limit }) {
           ←
         </button>
 
-        {/* ========================= */}
-        {/* PROJECT CARDS */}
-        {/* ========================= */}
-
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {visibleProjects.map((item) => (
             <article
               key={`${category.id}-${item.id}`}
               className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#508D4E] hover:shadow-xl"
             >
-              {/* ========================= */}
-              {/* IMAGE */}
-              {/* ========================= */}
-
               <div className="h-48 overflow-hidden bg-[#80AF81] sm:h-52 md:h-48 lg:h-56">
                 <img
                   src={item.image}
@@ -168,10 +135,6 @@ function ProjectCategory({ category, limit }) {
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
-
-              {/* ========================= */}
-              {/* CONTENT */}
-              {/* ========================= */}
 
               <div className="flex flex-1 flex-col p-5 sm:p-6">
                 {/* TITLE */}
@@ -196,7 +159,7 @@ function ProjectCategory({ category, limit }) {
                   </p>
                 )}
 
-                {/* DETAIL */}
+                {/* DETAIL BUTTON */}
 
                 <footer className="mt-5">
                   <Link
@@ -211,17 +174,13 @@ function ProjectCategory({ category, limit }) {
           ))}
         </div>
 
-        {/* ========================= */}
-        {/* RIGHT ARROW */}
-        {/* ========================= */}
-
         <button
           type="button"
           onClick={handleNext}
-          disabled={startIndex >= maxIndex}
+          disabled={safeIndex >= maxIndex}
           aria-label="Project berikutnya"
           className={`absolute top-1/2 right-0 z-20 flex h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-lg font-bold shadow-md transition md:h-11 md:w-11 md:text-xl ${
-            startIndex >= maxIndex
+            safeIndex >= maxIndex
               ? "cursor-not-allowed border-[#80AF81] bg-[#D6EFD8] text-[#80AF81] opacity-40"
               : "border-[#80AF81] bg-[#D6EFD8] text-[#1A5319] hover:bg-[#508D4E] hover:text-[#D6EFD8]"
           }`}
@@ -229,10 +188,6 @@ function ProjectCategory({ category, limit }) {
           →
         </button>
       </div>
-
-      {/* ========================= */}
-      {/* LIHAT SELENGKAPNYA */}
-      {/* ========================= */}
 
       {limit && (
         <footer className="mt-6 flex justify-center md:justify-end">

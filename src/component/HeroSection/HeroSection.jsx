@@ -44,11 +44,23 @@ export default function HeroSectionn() {
             </header>
 
             <footer className="mt-8 flex flex-col items-center gap-4 md:flex-row md:justify-start">
-              <button className="h-11 w-40 rounded-lg bg-[#508D4E] font-medium text-[#D6EFD8] transition hover:scale-105 hover:border hover:border-black hover:bg-[#D6EFD8] hover:text-black">
+              <button
+                onClick={() =>
+                  window.open("/CV_Muhammad Ramdani.pdf", "_blank")
+                }
+                className="h-11 w-40 rounded-lg bg-[#508D4E] font-medium text-[#D6EFD8] transition hover:scale-105 hover:border hover:border-black hover:bg-[#D6EFD8] hover:text-black"
+              >
                 Download CV
               </button>
 
-              <button className="h-11 w-40 rounded-lg border border-gray-600 text-black transition hover:bg-[#508D4E] hover:text-[#D6EFD8]">
+              <button
+                onClick={() => {
+                  document.getElementById("projects")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+                className="h-11 w-40 rounded-lg border border-gray-600 text-black transition hover:bg-[#508D4E] hover:text-[#D6EFD8]"
+              >
                 Lihat Project
               </button>
             </footer>

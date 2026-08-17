@@ -82,7 +82,7 @@ export default function Contact() {
 
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com/in/username"
+              href="https://linkedin.com/in/muhamadramdani121"
               target="_blank"
               rel="noreferrer"
               className="group flex items-center justify-between gap-4 rounded-2xl border border-[#80AF81] bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#508D4E] hover:bg-[#D6EFD8] hover:shadow-md sm:p-5"
@@ -96,7 +96,7 @@ export default function Contact() {
                   <p className="text-sm font-medium text-[#80AF81]">LinkedIn</p>
 
                   <p className="truncate font-semibold text-[#1A5319]">
-                    linkedin.com/in/username
+                    linkedin.com/in/muhamadramdani121
                   </p>
                 </div>
               </div>

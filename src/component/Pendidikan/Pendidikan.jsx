@@ -27,7 +27,7 @@ export default function Pendidikan() {
   ];
 
   return (
-    <section className="mt-16">
+    <section className="mt-16 pb-4">
       {/* Header */}
       <header className="px-6 pt-15 pb-2 text-center">
         <h1 className="inline-block border-b-2 border-[#508D4E] pb-2 text-4xl font-bold text-[#1A5319]">

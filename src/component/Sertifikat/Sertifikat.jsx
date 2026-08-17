@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
@@ -7,24 +7,56 @@ import sertifikat from "../../data/Sertifikat";
 export default function Sertifikat({ limit = false, portfolio = false }) {
   const [activeCard, setActiveCard] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
 
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (window.innerWidth < 768) {
+        // Mobile
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        // Tablet
+        setVisibleCount(2);
+      } else {
+        // Desktop
+        setVisibleCount(3);
+      }
+    };
+
+    updateVisibleCount();
+
+    window.addEventListener("resize", updateVisibleCount);
+
+    return () => {
+      window.removeEventListener("resize", updateVisibleCount);
+    };
+  }, []);
+
+  // Posisi maksimal carousel
+  const maxIndex = Math.max(sertifikat.length - visibleCount, 0);
+
+  // Mencegah index keluar dari batas
+  const safeIndex = Math.min(currentIndex, maxIndex);
+
+  // Sertifikat yang ditampilkan
   const visibleSertifikat = limit
-    ? sertifikat.slice(currentIndex, currentIndex + 3)
+    ? sertifikat.slice(safeIndex, safeIndex + visibleCount)
     : sertifikat;
 
-  const canPrev = currentIndex > 0;
-  const canNext = currentIndex + 3 < sertifikat.length;
+  // Tombol navigasi
+  const canPrev = safeIndex > 0;
+  const canNext = safeIndex < maxIndex;
 
   const handlePrev = () => {
-    if (canPrev) {
-      setCurrentIndex((prev) => prev - 1);
-    }
+    if (!canPrev) return;
+
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
   };
 
   const handleNext = () => {
-    if (canNext) {
-      setCurrentIndex((prev) => prev + 1);
-    }
+    if (!canNext) return;
+
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
   };
 
   const gridClass = portfolio
@@ -33,7 +65,6 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
 
   return (
     <>
-      {/* ==================== TITLE ==================== */}
       {!portfolio && (
         <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
           <h1 className="border-b-2 border-[#508D4E] pb-3 text-center text-4xl font-bold text-[#1A5319]">
@@ -43,13 +74,9 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
       )}
 
       <main className="mx-auto max-w-6xl px-5 py-12">
-        {/* =====================================================
-            CAROUSEL MODE
-        ===================================================== */}
         {limit ? (
           <>
             <div className="relative px-5 md:px-6">
-              {/* ==================== PREVIOUS ==================== */}
               <button
                 type="button"
                 onClick={handlePrev}
@@ -64,7 +91,6 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
                 <FaArrowLeft size={14} />
               </button>
 
-              {/* ==================== CARDS ==================== */}
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {visibleSertifikat.map((item) => (
                   <section
@@ -72,9 +98,8 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
                     onClick={() =>
                       setActiveCard(activeCard === item.id ? null : item.id)
                     }
-                    className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-[#508D4E] hover:shadow-xl"
+                    className="group flex min-w-0 cursor-pointer flex-col overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-[#508D4E] hover:shadow-xl"
                   >
-                    {/* ==================== IMAGE FRAME ==================== */}
                     <div className="relative m-3 overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] p-2 shadow-md transition duration-500 group-hover:border-[#508D4E] group-hover:shadow-lg">
                       {/* Decorative Corner */}
                       <div className="absolute top-0 left-0 z-10 h-8 w-8 rounded-br-2xl border-r-2 border-b-2 border-[#508D4E]" />
@@ -91,11 +116,10 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
                       </div>
                     </div>
 
-                    {/* ==================== CONTENT ==================== */}
                     <div className="flex flex-1 flex-col p-5">
                       {/* Title + Year */}
                       <div className="flex items-start justify-between gap-3">
-                        <div>
+                        <div className="min-w-0">
                           <h2 className="text-xl font-bold text-[#1A5319]">
                             {item.title}
                           </h2>
@@ -135,7 +159,6 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
                 ))}
               </div>
 
-              {/* ==================== NEXT ==================== */}
               <button
                 type="button"
                 onClick={handleNext}
@@ -151,7 +174,6 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
               </button>
             </div>
 
-            {/* ==================== SEE MORE ==================== */}
             <footer className="mt-10 flex justify-end">
               <Link
                 to="/portfolio/sertifikat"
@@ -166,9 +188,6 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
             </footer>
           </>
         ) : (
-          /* =====================================================
-             PORTFOLIO MODE
-          ===================================================== */
           <div className={gridClass}>
             {visibleSertifikat.map((item) => (
               <section
@@ -178,14 +197,11 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
                 }
                 className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-[#508D4E] hover:shadow-xl"
               >
-                {/* ==================== IMAGE FRAME ==================== */}
                 <div className="relative m-3 overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] p-2 shadow-md transition duration-500 group-hover:border-[#508D4E] group-hover:shadow-lg">
-                  {/* Decorative Corner */}
                   <div className="absolute top-0 left-0 z-10 h-8 w-8 rounded-br-2xl border-r-2 border-b-2 border-[#508D4E]" />
 
                   <div className="absolute right-0 bottom-0 z-10 h-8 w-8 rounded-tl-2xl border-t-2 border-l-2 border-[#508D4E]" />
 
-                  {/* Certificate Image */}
                   <div className="flex h-52 items-center justify-center overflow-hidden rounded-xl border border-[#80AF81]/60 bg-white">
                     <img
                       src={item.image}
@@ -195,11 +211,9 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
                   </div>
                 </div>
 
-                {/* ==================== CONTENT ==================== */}
                 <div className="flex flex-1 flex-col p-5">
-                  {/* Title + Year */}
                   <div className="flex items-start justify-between gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <h2 className="text-xl font-bold text-[#1A5319]">
                         {item.title}
                       </h2>
@@ -214,7 +228,6 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
                     </span>
                   </div>
 
-                  {/* Description */}
                   <p
                     className={`mt-4 flex-1 overflow-hidden text-sm leading-6 text-[#508D4E] transition-all duration-500 ${
                       activeCard === item.id
@@ -225,7 +238,6 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
                     {item.description}
                   </p>
 
-                  {/* Button */}
                   <footer className="mt-6">
                     <button
                       type="button"
