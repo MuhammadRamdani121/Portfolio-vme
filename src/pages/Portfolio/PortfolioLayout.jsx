@@ -4,13 +4,13 @@ import PortfolioSidebar from "../../component/Sidebar/PortfolioSidebar";
 
 export default function PortfolioLayout() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#D6EFD8]">
       <div className="mx-auto max-w-7xl px-5 py-8">
         {/* Mobile */}
         <div className="md:hidden">
           <PortfolioNavbar />
 
-          <main className="mt-20 rounded-2xl border border-gray-200 bg-white p-6 shadow-md">
+          <main className="mt-20 rounded-2xl border border-[#80AF81] bg-[#D6EFD8] p-6 shadow-md">
             <Outlet />
           </main>
         </div>
@@ -19,7 +19,7 @@ export default function PortfolioLayout() {
         <div className="hidden gap-8 md:flex">
           <PortfolioSidebar />
 
-          <main className="min-w-0 flex-1 rounded-2xl border border-gray-200 bg-white p-8 shadow-md">
+          <main className="min-w-0 flex-1 rounded-2xl border border-[#80AF81] bg-[#D6EFD8] p-8 shadow-md">
             <Outlet />
           </main>
         </div>

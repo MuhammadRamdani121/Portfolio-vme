@@ -32,6 +32,7 @@ export default function Project({ limit = false, portfolio = false }) {
               key={category.id}
               category={category}
               limit={limit}
+              portfolio={portfolio}
             />
           );
         })}
@@ -40,7 +41,7 @@ export default function Project({ limit = false, portfolio = false }) {
   );
 }
 
-function ProjectCategory({ category, limit }) {
+function ProjectCategory({ category, limit, portfolio }) {
   const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
 
@@ -49,15 +50,31 @@ function ProjectCategory({ category, limit }) {
 
   useEffect(() => {
     const updateVisibleCount = () => {
-      if (window.innerWidth < 768) {
-        // Mobile
-        setVisibleCount(1);
-      } else if (window.innerWidth < 1024) {
-        // Tablet
-        setVisibleCount(2);
+      if (portfolio) {
+        // =========================
+        // HOME
+        // =========================
+        if (window.innerWidth < 768) {
+          // Mobile
+          setVisibleCount(1);
+        } else if (window.innerWidth < 1024) {
+          // Tablet
+          setVisibleCount(2);
+        } else {
+          // Desktop
+          setVisibleCount(3);
+        }
       } else {
-        // Desktop
-        setVisibleCount(3);
+        // =========================
+        // PAGE PROJECT
+        // =========================
+        if (window.innerWidth < 768) {
+          // Mobile
+          setVisibleCount(1);
+        } else {
+          // Tablet & Desktop
+          setVisibleCount(2);
+        }
       }
     };
 
@@ -68,18 +85,15 @@ function ProjectCategory({ category, limit }) {
     return () => {
       window.removeEventListener("resize", updateVisibleCount);
     };
-  }, []);
+  }, [portfolio]);
 
   const maxIndex = Math.max(totalProjects - visibleCount, 0);
 
   /*
-   * Jangan melakukan setState di useEffect.
-   *
    * Kalau ukuran layar berubah dan startIndex
-   * melewati batas, kita cukup gunakan safeIndex
-   * untuk menentukan card yang ditampilkan.
+   * melewati batas, gunakan safeIndex agar
+   * tidak mengambil data yang melebihi array.
    */
-
   const safeIndex = Math.min(startIndex, maxIndex);
 
   const visibleProjects = projectList.slice(
@@ -101,13 +115,16 @@ function ProjectCategory({ category, limit }) {
 
   return (
     <section className="mb-16">
+      {/* CATEGORY TITLE */}
       <header className="mb-8">
         <h2 className="text-2xl font-bold text-[#1A5319]">
           {category.category}
         </h2>
       </header>
 
+      {/* PROJECT SLIDER */}
       <div className="relative px-6 md:px-8">
+        {/* PREVIOUS BUTTON */}
         <button
           type="button"
           onClick={handlePrevious}
@@ -122,12 +139,18 @@ function ProjectCategory({ category, limit }) {
           ←
         </button>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        {/* PROJECT CARDS */}
+        <div
+          className={`grid grid-cols-1 gap-5 md:grid-cols-2 ${
+            portfolio ? "lg:grid-cols-3 lg:gap-6" : "lg:grid-cols-2 lg:gap-6"
+          }`}
+        >
           {visibleProjects.map((item) => (
             <article
               key={`${category.id}-${item.id}`}
               className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#508D4E] hover:shadow-xl"
             >
+              {/* IMAGE */}
               <div className="h-48 overflow-hidden bg-[#80AF81] sm:h-52 md:h-48 lg:h-56">
                 <img
                   src={item.image}
@@ -136,15 +159,14 @@ function ProjectCategory({ category, limit }) {
                 />
               </div>
 
+              {/* CONTENT */}
               <div className="flex flex-1 flex-col p-5 sm:p-6">
                 {/* TITLE */}
-
                 <h3 className="text-lg font-bold text-[#1A5319] sm:text-xl">
                   {item.title}
                 </h3>
 
                 {/* TECH */}
-
                 {item.tech && (
                   <span className="mt-3 w-fit rounded-full border border-[#508D4E] px-3 py-1 text-xs font-medium text-[#1A5319] sm:text-sm">
                     {item.tech}
@@ -152,7 +174,6 @@ function ProjectCategory({ category, limit }) {
                 )}
 
                 {/* DESCRIPTION */}
-
                 {item.description && (
                   <p className="mt-4 flex-1 text-sm leading-6 text-[#508D4E]">
                     {item.description}
@@ -160,7 +181,6 @@ function ProjectCategory({ category, limit }) {
                 )}
 
                 {/* DETAIL BUTTON */}
-
                 <footer className="mt-5">
                   <Link
                     to={`/portfolio/project/${item.id}`}
@@ -174,6 +194,7 @@ function ProjectCategory({ category, limit }) {
           ))}
         </div>
 
+        {/* NEXT BUTTON */}
         <button
           type="button"
           onClick={handleNext}
@@ -189,6 +210,7 @@ function ProjectCategory({ category, limit }) {
         </button>
       </div>
 
+      {/* LIHAT SELENGKAPNYA */}
       {limit && (
         <footer className="mt-6 flex justify-center md:justify-end">
           <Link

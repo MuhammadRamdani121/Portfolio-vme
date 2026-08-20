@@ -34,7 +34,7 @@ export default function Home() {
         </section>
 
         <section id="projects" className="scroll-mt-20 bg-[#D6EFD8]">
-          <Project limit={true} />
+          <Project limit={true} portfolio={true} />
         </section>
 
         <section id="sertifikat" className="scroll-mt-20 bg-[#F5FAF5]">
