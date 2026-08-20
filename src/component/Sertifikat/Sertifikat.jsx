@@ -1,13 +1,79 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 import sertifikat from "../../data/Sertifikat";
 
 export default function Sertifikat({ limit = false, portfolio = false }) {
-  const [activeCard, setActiveCard] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  /*
+   * =====================================================
+   * PAGE SERTIFIKAT
+   * =====================================================
+   *
+   * portfolio = false
+   *
+   * Semua sertifikat ditampilkan.
+   *
+   * Mobile  = 1
+   * Tablet  = 2
+   * Desktop = 2
+   */
+
+  if (!portfolio) {
+    return (
+      <main className="mx-auto max-w-6xl px-5 pt-6 pb-12">
+        <section className="mb-16">
+          {/* CATEGORY TITLE */}
+          <header className="mb-8">
+            <h2 className="text-2xl font-bold text-[#1A5319]">
+              Sertifikasi & Pengembangan
+            </h2>
+          </header>
+
+          {/* ALL CERTIFICATES */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {sertifikat.map((item) => (
+              <CertificateCard key={item.id} item={item} />
+            ))}
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  /*
+   * =====================================================
+   * HOME
+   * =====================================================
+   *
+   * portfolio = true
+   *
+   * Mobile  = 1
+   * Tablet  = 2
+   * Desktop = 3
+   *
+   * Menggunakan slider.
+   */
+
+  return <CertificateSlider certificates={sertifikat} limit={limit} />;
+}
+
+/*
+ * =====================================================
+ * HOME SLIDER
+ * =====================================================
+ */
+
+function CertificateSlider({ certificates, limit }) {
+  const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
+
+  const totalCertificates = certificates.length;
+
+  /*
+   * =====================================================
+   * RESPONSIVE JUMLAH SERTIFIKAT
+   * =====================================================
+   */
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -32,226 +98,177 @@ export default function Sertifikat({ limit = false, portfolio = false }) {
     };
   }, []);
 
-  // Posisi maksimal carousel
-  const maxIndex = Math.max(sertifikat.length - visibleCount, 0);
+  /*
+   * =====================================================
+   * MAX INDEX
+   * =====================================================
+   */
 
-  // Mencegah index keluar dari batas
-  const safeIndex = Math.min(currentIndex, maxIndex);
+  const maxIndex = Math.max(totalCertificates - visibleCount, 0);
 
-  // Sertifikat yang ditampilkan
-  const visibleSertifikat = limit
-    ? sertifikat.slice(safeIndex, safeIndex + visibleCount)
-    : sertifikat;
+  /*
+   * Mencegah startIndex keluar batas
+   */
 
-  // Tombol navigasi
-  const canPrev = safeIndex > 0;
-  const canNext = safeIndex < maxIndex;
+  const safeIndex = Math.min(startIndex, maxIndex);
 
-  const handlePrev = () => {
-    if (!canPrev) return;
+  /*
+   * =====================================================
+   * SERTIFIKAT YANG DITAMPILKAN
+   * =====================================================
+   */
 
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
-  };
+  const visibleCertificates = certificates.slice(
+    safeIndex,
+    safeIndex + visibleCount,
+  );
+
+  /*
+   * =====================================================
+   * NEXT
+   * =====================================================
+   */
 
   const handleNext = () => {
-    if (!canNext) return;
-
-    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+    if (safeIndex < maxIndex) {
+      setStartIndex((prev) => Math.min(prev + 1, maxIndex));
+    }
   };
 
-  const gridClass = portfolio
-    ? "grid gap-8 md:grid-cols-2"
-    : "grid gap-8 md:grid-cols-2 lg:grid-cols-3";
+  /*
+   * =====================================================
+   * PREVIOUS
+   * =====================================================
+   */
+
+  const handlePrevious = () => {
+    if (safeIndex > 0) {
+      setStartIndex((prev) => Math.max(prev - 1, 0));
+    }
+  };
 
   return (
-    <>
-      {!portfolio && (
-        <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
-          <h1 className="border-b-2 border-[#508D4E] pb-3 text-center text-4xl font-bold text-[#1A5319]">
-            Sertifikat
-          </h1>
+    <main className="mx-auto max-w-6xl px-5 pt-6 pb-12">
+      <section className="mb-16">
+        {/* CATEGORY TITLE */}
+        <header className="mb-8">
+          <h2 className="text-2xl font-bold text-[#1A5319]">
+            Sertifikasi & Pengembangan
+          </h2>
         </header>
-      )}
 
-      <main className="mx-auto max-w-6xl px-5 py-12">
-        {limit ? (
-          <>
-            <div className="relative px-5 md:px-6">
-              <button
-                type="button"
-                onClick={handlePrev}
-                disabled={!canPrev}
-                aria-label="Sertifikat sebelumnya"
-                className={`absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#80AF81] bg-[#D6EFD8] text-[#1A5319] shadow-md transition-all duration-300 ${
-                  canPrev
-                    ? "cursor-pointer hover:border-[#508D4E] hover:bg-[#508D4E] hover:text-[#D6EFD8]"
-                    : "pointer-events-none opacity-0"
-                }`}
-              >
-                <FaArrowLeft size={14} />
-              </button>
+        {/* SLIDER */}
+        <div className="relative px-6 md:px-8">
+          {/* PREVIOUS */}
+          <button
+            type="button"
+            onClick={handlePrevious}
+            disabled={safeIndex === 0}
+            aria-label="Sertifikat sebelumnya"
+            className={`absolute top-1/2 left-0 z-20 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-lg font-bold shadow-md transition md:h-11 md:w-11 md:text-xl ${
+              safeIndex === 0
+                ? "cursor-not-allowed border-[#80AF81] bg-[#D6EFD8] text-[#80AF81] opacity-40"
+                : "border-[#80AF81] bg-[#D6EFD8] text-[#1A5319] hover:bg-[#508D4E] hover:text-[#D6EFD8]"
+            }`}
+          >
+            ←
+          </button>
 
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {visibleSertifikat.map((item) => (
-                  <section
-                    key={item.id}
-                    onClick={() =>
-                      setActiveCard(activeCard === item.id ? null : item.id)
-                    }
-                    className="group flex min-w-0 cursor-pointer flex-col overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-[#508D4E] hover:shadow-xl"
-                  >
-                    <div className="relative m-3 overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] p-2 shadow-md transition duration-500 group-hover:border-[#508D4E] group-hover:shadow-lg">
-                      {/* Decorative Corner */}
-                      <div className="absolute top-0 left-0 z-10 h-8 w-8 rounded-br-2xl border-r-2 border-b-2 border-[#508D4E]" />
-
-                      <div className="absolute right-0 bottom-0 z-10 h-8 w-8 rounded-tl-2xl border-t-2 border-l-2 border-[#508D4E]" />
-
-                      {/* Certificate Image */}
-                      <div className="flex h-52 items-center justify-center overflow-hidden rounded-xl border border-[#80AF81]/60 bg-white">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="max-h-full max-w-full object-contain p-2 transition duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-1 flex-col p-5">
-                      {/* Title + Year */}
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="min-w-0">
-                          <h2 className="text-xl font-bold text-[#1A5319]">
-                            {item.title}
-                          </h2>
-
-                          <p className="mt-1 text-sm font-medium text-[#508D4E]">
-                            {item.issuer}
-                          </p>
-                        </div>
-
-                        <span className="shrink-0 rounded-full bg-[#80AF81] px-3 py-1 text-sm font-medium text-[#1A5319]">
-                          {item.year}
-                        </span>
-                      </div>
-
-                      {/* Description */}
-                      <p
-                        className={`mt-4 flex-1 overflow-hidden text-sm leading-6 text-[#508D4E] transition-all duration-500 ${
-                          activeCard === item.id
-                            ? "max-h-60"
-                            : "max-h-18 md:group-hover:max-h-60"
-                        }`}
-                      >
-                        {item.description}
-                      </p>
-
-                      {/* Button */}
-                      <footer className="mt-6">
-                        <button
-                          type="button"
-                          className="w-full rounded-lg border border-[#508D4E] py-2 font-semibold text-[#1A5319] transition-all duration-300 hover:bg-[#508D4E] hover:text-[#D6EFD8]"
-                        >
-                          Lihat Sertifikat →
-                        </button>
-                      </footer>
-                    </div>
-                  </section>
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={handleNext}
-                disabled={!canNext}
-                aria-label="Sertifikat berikutnya"
-                className={`absolute top-1/2 right-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#80AF81] bg-[#D6EFD8] text-[#1A5319] shadow-md transition-all duration-300 ${
-                  canNext
-                    ? "cursor-pointer hover:border-[#508D4E] hover:bg-[#508D4E] hover:text-[#D6EFD8]"
-                    : "pointer-events-none opacity-0"
-                }`}
-              >
-                <FaArrowRight size={14} />
-              </button>
-            </div>
-
-            <footer className="mt-10 flex justify-end">
-              <Link
-                to="/portfolio/sertifikat"
-                className="group inline-flex items-center gap-2 font-semibold text-[#508D4E] transition-colors duration-300 hover:text-[#1A5319]"
-              >
-                Lihat Selengkapnya
-                <FaArrowRight
-                  size={13}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Link>
-            </footer>
-          </>
-        ) : (
-          <div className={gridClass}>
-            {visibleSertifikat.map((item) => (
-              <section
-                key={item.id}
-                onClick={() =>
-                  setActiveCard(activeCard === item.id ? null : item.id)
-                }
-                className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-[#508D4E] hover:shadow-xl"
-              >
-                <div className="relative m-3 overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] p-2 shadow-md transition duration-500 group-hover:border-[#508D4E] group-hover:shadow-lg">
-                  <div className="absolute top-0 left-0 z-10 h-8 w-8 rounded-br-2xl border-r-2 border-b-2 border-[#508D4E]" />
-
-                  <div className="absolute right-0 bottom-0 z-10 h-8 w-8 rounded-tl-2xl border-t-2 border-l-2 border-[#508D4E]" />
-
-                  <div className="flex h-52 items-center justify-center overflow-hidden rounded-xl border border-[#80AF81]/60 bg-white">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="max-h-full max-w-full object-contain p-2 transition duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-1 flex-col p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <h2 className="text-xl font-bold text-[#1A5319]">
-                        {item.title}
-                      </h2>
-
-                      <p className="mt-1 text-sm font-medium text-[#508D4E]">
-                        {item.issuer}
-                      </p>
-                    </div>
-
-                    <span className="shrink-0 rounded-full bg-[#80AF81] px-3 py-1 text-sm font-medium text-[#1A5319]">
-                      {item.year}
-                    </span>
-                  </div>
-
-                  <p
-                    className={`mt-4 flex-1 overflow-hidden text-sm leading-6 text-[#508D4E] transition-all duration-500 ${
-                      activeCard === item.id
-                        ? "max-h-60"
-                        : "max-h-18 md:group-hover:max-h-60"
-                    }`}
-                  >
-                    {item.description}
-                  </p>
-
-                  <footer className="mt-6">
-                    <button
-                      type="button"
-                      className="w-full rounded-lg border border-[#508D4E] py-2 font-semibold text-[#1A5319] transition-all duration-300 hover:bg-[#508D4E] hover:text-[#D6EFD8]"
-                    >
-                      Lihat Sertifikat →
-                    </button>
-                  </footer>
-                </div>
-              </section>
+          {/* CERTIFICATE CARDS */}
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            {visibleCertificates.map((item) => (
+              <CertificateCard key={item.id} item={item} />
             ))}
           </div>
+
+          {/* NEXT */}
+          <button
+            type="button"
+            onClick={handleNext}
+            disabled={safeIndex >= maxIndex}
+            aria-label="Sertifikat berikutnya"
+            className={`absolute top-1/2 right-0 z-20 flex h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-lg font-bold shadow-md transition md:h-11 md:w-11 md:text-xl ${
+              safeIndex >= maxIndex
+                ? "cursor-not-allowed border-[#80AF81] bg-[#D6EFD8] text-[#80AF81] opacity-40"
+                : "border-[#80AF81] bg-[#D6EFD8] text-[#1A5319] hover:bg-[#508D4E] hover:text-[#D6EFD8]"
+            }`}
+          >
+            →
+          </button>
+        </div>
+
+        {/* LIHAT SELENGKAPNYA */}
+        {limit && (
+          <footer className="mt-6 flex justify-center md:justify-end">
+            <Link
+              to="/portfolio/sertifikat"
+              className="font-semibold text-[#508D4E] transition hover:text-[#1A5319]"
+            >
+              Lihat Selengkapnya →
+            </Link>
+          </footer>
         )}
-      </main>
-    </>
+      </section>
+    </main>
+  );
+}
+
+/*
+ * =====================================================
+ * CERTIFICATE CARD
+ * =====================================================
+ */
+
+function CertificateCard({ item }) {
+  return (
+    <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#508D4E] hover:shadow-xl">
+      {/* IMAGE */}
+      <div className="h-48 overflow-hidden bg-[#80AF81] sm:h-52 md:h-48 lg:h-56">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-105"
+        />
+      </div>
+
+      {/* CONTENT */}
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        {/* TITLE */}
+        <h3 className="text-lg font-bold text-[#1A5319] sm:text-xl">
+          {item.title}
+        </h3>
+
+        {/* ISSUER */}
+        {item.issuer && (
+          <p className="mt-3 text-sm font-semibold text-[#508D4E]">
+            {item.issuer}
+          </p>
+        )}
+
+        {/* YEAR */}
+        {item.year && (
+          <span className="mt-3 w-fit rounded-full border border-[#508D4E] px-3 py-1 text-xs font-medium text-[#1A5319] sm:text-sm">
+            {item.year}
+          </span>
+        )}
+
+        {/* DESCRIPTION */}
+        {item.description && (
+          <p className="mt-4 flex-1 text-sm leading-6 text-[#508D4E]">
+            {item.description}
+          </p>
+        )}
+
+        {/* DETAIL */}
+        <footer className="mt-5">
+          <Link
+            to={`/portfolio/sertifikat/${item.id}`}
+            className="block w-full rounded-lg bg-[#508D4E] py-3 text-center text-sm font-semibold text-[#D6EFD8] transition hover:bg-[#1A5319] sm:text-base"
+          >
+            Lihat Detail →
+          </Link>
+        </footer>
+      </div>
+    </article>
   );
 }

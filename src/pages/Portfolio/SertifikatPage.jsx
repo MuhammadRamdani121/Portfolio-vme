@@ -12,7 +12,7 @@ export default function SertifikatPage() {
         </p>
       </header>
 
-      <Sertifikat portfolio />
+      <Sertifikat />
     </>
   );
 }

@@ -5,39 +5,22 @@ import projects from "../../data/Project";
 
 export default function Project({ limit = false, portfolio = false }) {
   return (
-    <>
-      {!portfolio && (
-        <header className="mx-auto mt-16 flex max-w-6xl justify-center px-5">
-          <h1 className="border-b-2 border-[#508D4E] pt-10 text-center text-4xl font-bold text-[#1A5319]">
-            Projects
-          </h1>
-        </header>
-      )}
+    <main className="mx-auto max-w-6xl px-5 pt-6 pb-12">
+      {projects.map((category) => {
+        if (!category.projects?.length) {
+          return null;
+        }
 
-      <main className="mx-auto max-w-6xl px-5 pt-6 pb-12">
-        {!portfolio && (
-          <p className="mx-auto mb-12 max-w-2xl text-center text-[#508D4E]">
-            Beberapa project yang pernah saya kerjakan dalam proses belajar dan
-            pengembangan kemampuan di bidang teknologi.
-          </p>
-        )}
-
-        {projects.map((category) => {
-          if (!category.projects?.length) {
-            return null;
-          }
-
-          return (
-            <ProjectCategory
-              key={category.id}
-              category={category}
-              limit={limit}
-              portfolio={portfolio}
-            />
-          );
-        })}
-      </main>
-    </>
+        return (
+          <ProjectCategory
+            key={category.id}
+            category={category}
+            limit={limit}
+            portfolio={portfolio}
+          />
+        );
+      })}
+    </main>
   );
 }
 
@@ -48,12 +31,29 @@ function ProjectCategory({ category, limit, portfolio }) {
   const projectList = category.projects;
   const totalProjects = projectList.length;
 
+  /*
+   * =====================================================
+   * RESPONSIVE JUMLAH PROJECT
+   * =====================================================
+   *
+   * HOME:
+   * Mobile  = 1
+   * Tablet  = 2
+   * Desktop = 3
+   *
+   * PAGE PROJECT:
+   * Mobile  = 1
+   * Tablet  = 2
+   * Desktop = 2
+   */
+
   useEffect(() => {
     const updateVisibleCount = () => {
       if (portfolio) {
         // =========================
         // HOME
         // =========================
+
         if (window.innerWidth < 768) {
           // Mobile
           setVisibleCount(1);
@@ -68,6 +68,7 @@ function ProjectCategory({ category, limit, portfolio }) {
         // =========================
         // PAGE PROJECT
         // =========================
+
         if (window.innerWidth < 768) {
           // Mobile
           setVisibleCount(1);
@@ -87,13 +88,107 @@ function ProjectCategory({ category, limit, portfolio }) {
     };
   }, [portfolio]);
 
+  /*
+   * =====================================================
+   * PAGE PROJECT
+   * =====================================================
+   *
+   * Ketika portfolio = false:
+   *
+   * Semua project ditampilkan.
+   *
+   * Mobile  = 1 kolom
+   * Desktop = 2 kolom
+   *
+   * Tidak menggunakan slider.
+   */
+
+  if (!portfolio) {
+    return (
+      <section className="mb-16">
+        {/* CATEGORY TITLE */}
+        <header className="mb-8">
+          <h2 className="text-2xl font-bold text-[#1A5319]">
+            {category.category}
+          </h2>
+        </header>
+
+        {/* ALL PROJECTS */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {projectList.map((item) => (
+            <article
+              key={`${category.id}-${item.id}`}
+              className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#80AF81] bg-[#D6EFD8] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#508D4E] hover:shadow-xl"
+            >
+              {/* IMAGE */}
+              <div className="h-52 overflow-hidden bg-[#80AF81] sm:h-56 md:h-60">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* CONTENT */}
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                {/* TITLE */}
+                <h3 className="text-lg font-bold text-[#1A5319] sm:text-xl">
+                  {item.title}
+                </h3>
+
+                {/* TECH */}
+                {item.tech && (
+                  <span className="mt-3 w-fit rounded-full border border-[#508D4E] px-3 py-1 text-xs font-medium text-[#1A5319] sm:text-sm">
+                    {item.tech}
+                  </span>
+                )}
+
+                {/* DESCRIPTION */}
+                {item.description && (
+                  <p className="mt-4 flex-1 text-sm leading-6 text-[#508D4E]">
+                    {item.description}
+                  </p>
+                )}
+
+                {/* DETAIL BUTTON */}
+                <footer className="mt-5">
+                  <Link
+                    to={`/portfolio/project/${item.id}`}
+                    className="block w-full rounded-lg bg-[#508D4E] py-3 text-center text-sm font-semibold text-[#D6EFD8] transition hover:bg-[#1A5319] sm:text-base"
+                  >
+                    Lihat Detail →
+                  </Link>
+                </footer>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  /*
+   * =====================================================
+   * HOME
+   * =====================================================
+   *
+   * Home tetap menggunakan slider.
+   *
+   * Mobile  = 1
+   * Tablet  = 2
+   * Desktop = 3
+   */
+
   const maxIndex = Math.max(totalProjects - visibleCount, 0);
 
   /*
-   * Kalau ukuran layar berubah dan startIndex
-   * melewati batas, gunakan safeIndex agar
-   * tidak mengambil data yang melebihi array.
+   * Kalau ukuran layar berubah,
+   * startIndex bisa saja melebihi batas.
+   *
+   * safeIndex mencegah array mengambil
+   * posisi yang tidak tersedia.
    */
+
   const safeIndex = Math.min(startIndex, maxIndex);
 
   const visibleProjects = projectList.slice(
@@ -101,11 +196,23 @@ function ProjectCategory({ category, limit, portfolio }) {
     safeIndex + visibleCount,
   );
 
+  /*
+   * =====================================================
+   * NEXT
+   * =====================================================
+   */
+
   const handleNext = () => {
     if (safeIndex < maxIndex) {
       setStartIndex((prev) => Math.min(prev + 1, maxIndex));
     }
   };
+
+  /*
+   * =====================================================
+   * PREVIOUS
+   * =====================================================
+   */
 
   const handlePrevious = () => {
     if (safeIndex > 0) {
@@ -140,11 +247,7 @@ function ProjectCategory({ category, limit, portfolio }) {
         </button>
 
         {/* PROJECT CARDS */}
-        <div
-          className={`grid grid-cols-1 gap-5 md:grid-cols-2 ${
-            portfolio ? "lg:grid-cols-3 lg:gap-6" : "lg:grid-cols-2 lg:gap-6"
-          }`}
-        >
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {visibleProjects.map((item) => (
             <article
               key={`${category.id}-${item.id}`}

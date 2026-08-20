@@ -38,7 +38,7 @@ export default function Home() {
         </section>
 
         <section id="sertifikat" className="scroll-mt-20 bg-[#F5FAF5]">
-          <Sertifikat limit={true} />
+          <Sertifikat limit={true} portfolio={true} />
         </section>
 
         <section id="contact" className="scroll-mt-20 bg-[#D6EFD8]">
