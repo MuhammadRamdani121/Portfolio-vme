@@ -297,7 +297,6 @@ function ProjectCategory({ category, limit, portfolio }) {
           ))}
         </div>
 
-        {/* NEXT BUTTON */}
         <button
           type="button"
           onClick={handleNext}
