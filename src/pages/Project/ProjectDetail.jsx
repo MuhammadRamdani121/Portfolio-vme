@@ -14,15 +14,27 @@ import projects from "../../data/Project";
 export default function ProjectDetail() {
   const { id } = useParams();
 
+  // ID sekarang berbentuk: categoryId-projectId
+  // Contoh:
+  // Front End + project 1 = 1-1
+  // Excel + project 1 = 3-1
+  const [categoryId, projectId] = id.split("-");
+
   const allProjects = projects.flatMap(
     (category) =>
       category.projects?.map((project) => ({
         ...project,
         category: category.category,
+        categoryId: category.id,
       })) || [],
   );
 
-  const project = allProjects.find((project) => project.id === Number(id));
+  // Cari project berdasarkan categoryId DAN projectId
+  const project = allProjects.find(
+    (project) =>
+      project.categoryId === Number(categoryId) &&
+      project.id === Number(projectId),
+  );
 
   const [currentImage, setCurrentImage] = useState(0);
 

@@ -153,7 +153,7 @@ function ProjectCategory({ category, limit, portfolio }) {
                 {/* DETAIL BUTTON */}
                 <footer className="mt-5">
                   <Link
-                    to={`/portfolio/project/${item.id}`}
+                    to={`/portfolio/project/${category.id}-${item.id}`}
                     className="block w-full rounded-lg bg-[#508D4E] py-3 text-center text-sm font-semibold text-[#D6EFD8] transition hover:bg-[#1A5319] sm:text-base"
                   >
                     Lihat Detail →
@@ -286,7 +286,7 @@ function ProjectCategory({ category, limit, portfolio }) {
                 {/* DETAIL BUTTON */}
                 <footer className="mt-5">
                   <Link
-                    to={`/portfolio/project/${item.id}`}
+                    to={`/portfolio/project/${category.id}-${item.id}`}
                     className="block w-full rounded-lg bg-[#508D4E] py-3 text-center text-sm font-semibold text-[#D6EFD8] transition hover:bg-[#1A5319] sm:text-base"
                   >
                     Lihat Detail →
@@ -297,6 +297,7 @@ function ProjectCategory({ category, limit, portfolio }) {
           ))}
         </div>
 
+        {/* NEXT BUTTON */}
         <button
           type="button"
           onClick={handleNext}
